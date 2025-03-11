@@ -39328,7 +39328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRotationAngle: 55
-  tiempoTotal: 10
+  tiempoSubida: 3
 --- !u!95 &1220958234
 Animator:
   serializedVersion: 7
