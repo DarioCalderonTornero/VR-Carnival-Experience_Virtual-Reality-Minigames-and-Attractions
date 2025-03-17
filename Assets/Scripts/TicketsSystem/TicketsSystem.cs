@@ -3,16 +3,7 @@ using UnityEngine;
 public class TicketsSystem : MonoBehaviour
 {
     public int tickets;
-    private float rayDistance;
-    private bool interactingWithTickets = false;
-
-    public enum interactTypes
-    {
-        case1,
-        case2,
-    }
-
-    [SerializeField] private interactTypes currentInteraction;
+    private float rayDistance = 200;
 
     void Update()
     {
@@ -21,27 +12,18 @@ public class TicketsSystem : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
-            if (hit.collider.CompareTag("Tickets"))
+            TicketShop ticketShop = hit.collider.GetComponent<TicketShop>();
+            if (ticketShop != null )
             {
-                Debug.Log("Interacted with tickets");
+                Debug.Log($"Precio: {ticketShop.ticketCost} tickets.");
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    ticketShop.TryPurchase(this);
+                }
             }
+
+
         }
     }
-
-    private void GetCase1()
-    {
-        currentInteraction = interactTypes.case1;
-    }
-
-    private void GetCase2()
-    {
-        currentInteraction = interactTypes.case2;
-    }
-
-    private interactTypes ReturnCurrentInteraction()
-    {
-        return currentInteraction;
-    }
-
 
 }
