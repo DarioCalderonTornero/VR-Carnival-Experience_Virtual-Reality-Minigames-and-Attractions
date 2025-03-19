@@ -16,10 +16,10 @@ public class TicketsSystem : MonoBehaviour
             if (ticketShop != null )
             {
                 Debug.Log($"Precio: {ticketShop.ticketCost} tickets.");
-                if (Input.GetKeyDown(KeyCode.J))
-                {
-                    ticketShop.TryPurchase(this);
-                }
+                //if (Input.GetKeyDown(KeyCode.J))
+                //{
+                    //ticketShop.TryPurchase(this);
+                //}
             }
 
 
