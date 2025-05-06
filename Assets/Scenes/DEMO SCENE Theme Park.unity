@@ -7254,14 +7254,11 @@ PrefabInstance:
       value: SM_shop_candy_01
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     - target: {fileID: 8259803382033459699, guid: 93494e7c33f7dfb4888e5ac2fb326fc1, type: 3}
       propertyPath: 'm_Materials.Array.data[6]'
       value: 
       objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 7611165944525817894, guid: 93494e7c33f7dfb4888e5ac2fb326fc1, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -7270,9 +7267,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30309,14 +30303,11 @@ PrefabInstance:
       value: SM_shop_burgers (2)
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     - target: {fileID: 4011014364114738401, guid: 88a1c469bac8abc4595a189d8c3a487b, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 3218103546920828212, guid: 88a1c469bac8abc4595a189d8c3a487b, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -30325,9 +30316,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45276,14 +45264,11 @@ PrefabInstance:
       value: SM_shop_candy_01 (1)
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     - target: {fileID: 8259803382033459699, guid: 93494e7c33f7dfb4888e5ac2fb326fc1, type: 3}
       propertyPath: 'm_Materials.Array.data[6]'
       value: 
       objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 7611165944525817894, guid: 93494e7c33f7dfb4888e5ac2fb326fc1, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -45292,9 +45277,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49472,14 +49454,11 @@ PrefabInstance:
       value: SM_carousel_base
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     - target: {fileID: 6151860549524761712, guid: dd31c53ef9b84924d9247beb27e8d33f, type: 3}
       propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 5647286210813889957, guid: dd31c53ef9b84924d9247beb27e8d33f, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -49488,9 +49467,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68431,14 +68407,11 @@ PrefabInstance:
       value: SM_shop_burgers (1)
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     - target: {fileID: 4011014364114738401, guid: 88a1c469bac8abc4595a189d8c3a487b, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 3218103546920828212, guid: 88a1c469bac8abc4595a189d8c3a487b, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -68447,9 +68420,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -85893,17 +85863,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 =======
-=======
->>>>>>> Stashed changes
     - target: {fileID: 8163127157631685036, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     - target: {fileID: 8791748073510095638, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
       propertyPath: m_RootOrder
@@ -87299,11 +87263,7 @@ SceneRoots:
   - {fileID: 735852972}
   - {fileID: 219352225}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
   - {fileID: 720770207}
-=======
-  - {fileID: 1787604979}
->>>>>>> Stashed changes
 =======
   - {fileID: 1787604979}
 >>>>>>> Stashed changes
