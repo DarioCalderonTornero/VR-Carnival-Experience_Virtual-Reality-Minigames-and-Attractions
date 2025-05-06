@@ -8,9 +8,14 @@ public class Ferrywheelmovement : MonoBehaviour
 
     private bool canMoveCabin;
 
-    private void Awake()
+    private void Start()
     {
-        StartCoroutine(MoveCabin());
+        NoriaManager.Instance.OnNoriaBegin += NoriaManager_OnNoriaBegin;
+    }
+
+    private void NoriaManager_OnNoriaBegin(object sender, System.EventArgs e)
+    {
+        canMoveCabin = true;
     }
 
     private void Update()
@@ -24,16 +29,7 @@ public class Ferrywheelmovement : MonoBehaviour
                 cabina.up = Vector3.up;
             }
         }
-       
+
     }
-
-    
-
-    private IEnumerator MoveCabin()
-    {
-        yield return new WaitForSeconds(0f);
-        canMoveCabin = true;
-    }
-
 
 }
