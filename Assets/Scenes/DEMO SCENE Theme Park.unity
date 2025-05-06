@@ -7697,6 +7697,7 @@ MonoBehaviour:
   rollerCoaster: {fileID: 1833599427}
   seatTransform: {fileID: 1513034745}
   salidaTransform: {fileID: 25073165}
+  playerMove: {fileID: 20535288}
 --- !u!4 &239086569
 Transform:
   m_ObjectHideFlags: 0
@@ -21257,6 +21258,7 @@ MonoBehaviour:
   noriaTransform: {fileID: 1803224101}
   noriaSeatTransform: {fileID: 2076446875}
   salidaTransform: {fileID: 2026103925}
+  playerMove: {fileID: 20535288}
 --- !u!65 &681936860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59203,7 +59205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1669558368
 Transform:
   m_ObjectHideFlags: 0

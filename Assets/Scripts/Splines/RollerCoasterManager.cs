@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class RollerCoasterManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class RollerCoasterManager : MonoBehaviour
     [SerializeField] private Transform rollerCoaster;
     [SerializeField] private Transform seatTransform;
     [SerializeField] private Transform salidaTransform;
+
+    [SerializeField] private ContinuousMoveProvider playerMove;
 
     private bool splineStarted = false;
 
@@ -27,6 +30,8 @@ public class RollerCoasterManager : MonoBehaviour
             Invoke("FadeOut", 3f);
 
             StartCoroutine(FinishRollerCoaster());
+
+            playerMove.enabled = true;
 
             Debug.Log("Bajar Player");
         }
@@ -47,7 +52,7 @@ public class RollerCoasterManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player detected");
+            playerMove.enabled = false;
 
             FadeController.Instance.FadeIn();
             Invoke("FadeOut", 3f);
