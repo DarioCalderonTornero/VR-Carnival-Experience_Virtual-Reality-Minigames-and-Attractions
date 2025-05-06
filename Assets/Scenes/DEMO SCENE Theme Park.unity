@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.3243592, g: 0.33134902, b: 0.3490566, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -3262,6 +3262,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ee8d2d298bcfcfd4c9a046a9275b34b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
     - target: {fileID: 919132149155446097, guid: ee8d2d298bcfcfd4c9a046a9275b34b2, type: 3}
       propertyPath: m_Name
       value: SM_pirateship_ship
@@ -7249,7 +7253,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_shop_candy_01
       objectReference: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     - target: {fileID: 8259803382033459699, guid: 93494e7c33f7dfb4888e5ac2fb326fc1, type: 3}
@@ -7271,8 +7274,6 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15264,6 +15265,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 5315182168288736335, guid: e8e173b7aa040e347864b7d1a61056b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
+    - target: {fileID: 5315182168288736335, guid: e8e173b7aa040e347864b7d1a61056b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
     - target: {fileID: 5963802150578984346, guid: e8e173b7aa040e347864b7d1a61056b2, type: 3}
       propertyPath: m_Name
       value: SM_ticket_shop
@@ -16147,6 +16156,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 29f448fff59bcb4439b42385732d2c4f, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 29f448fff59bcb4439b42385732d2c4f, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
     - target: {fileID: 919132149155446097, guid: 29f448fff59bcb4439b42385732d2c4f, type: 3}
       propertyPath: m_Name
       value: SM_ticket_shop
@@ -25221,6 +25238,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6730438453b7d3b448684cb244fef292, type: 3}
+--- !u!1 &720770205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720770207}
+  - component: {fileID: 720770206}
+  m_Layer: 0
+  m_Name: PartyLightManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &720770206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720770205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc20967f06c1b184999fcd9bb0c3c0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedMaterial: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
+  flickerInterval: 0.5
+--- !u!4 &720770207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720770205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.290497, y: 12.603373, z: -40.677914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &720777140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4298297910480692273, guid: 80a372068bee1c8499156f156644e796, type: 3}
@@ -30114,6 +30177,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 7230105621651053443, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
     - target: {fileID: 8366933968289734892, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
       propertyPath: m_RootOrder
       value: 49
@@ -30241,7 +30308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_shop_burgers (2)
       objectReference: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     - target: {fileID: 4011014364114738401, guid: 88a1c469bac8abc4595a189d8c3a487b, type: 3}
@@ -30263,8 +30329,6 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30630,7 +30694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -41089,6 +41153,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 7230105621651053443, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
     - target: {fileID: 8366933968289734892, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -45207,7 +45275,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_shop_candy_01 (1)
       objectReference: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     - target: {fileID: 8259803382033459699, guid: 93494e7c33f7dfb4888e5ac2fb326fc1, type: 3}
@@ -45229,8 +45296,6 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47046,6 +47111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 7230105621651053443, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
     - target: {fileID: 8366933968289734892, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
       propertyPath: m_RootOrder
       value: 65
@@ -49402,7 +49471,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_carousel_base
       objectReference: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     - target: {fileID: 6151860549524761712, guid: dd31c53ef9b84924d9247beb27e8d33f, type: 3}
@@ -49424,8 +49492,6 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55086,6 +55152,22 @@ PrefabInstance:
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.987
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.3301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.3301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.3301887
       objectReference: {fileID: 0}
     - target: {fileID: 716906830792148215, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68348,7 +68430,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_shop_burgers (1)
       objectReference: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     - target: {fileID: 4011014364114738401, guid: 88a1c469bac8abc4595a189d8c3a487b, type: 3}
@@ -68370,8 +68451,6 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76900,6 +76979,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f8372c760010bb44eb85f4683eda8206, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
     - target: {fileID: 919132149155446097, guid: f8372c760010bb44eb85f4683eda8206, type: 3}
       propertyPath: m_Name
       value: NORIA
@@ -78033,6 +78116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 7230105621651053443, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
     - target: {fileID: 8366933968289734892, guid: f951b8c42d91d8d44a5e022406eebcd8, type: 3}
       propertyPath: m_RootOrder
       value: 245
@@ -78640,6 +78727,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 5315182168288736335, guid: e8e173b7aa040e347864b7d1a61056b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
+    - target: {fileID: 5315182168288736335, guid: e8e173b7aa040e347864b7d1a61056b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
     - target: {fileID: 5963802150578984346, guid: e8e173b7aa040e347864b7d1a61056b2, type: 3}
       propertyPath: m_Name
       value: SM_ticket_shop (1)
@@ -79249,6 +79344,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 5206243401417854711, guid: ff4be458b29be7949ab25bc3271555ed, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 332edf0d227ee0b4ca700f8443f225a8, type: 2}
     - target: {fileID: 5998995614125535010, guid: ff4be458b29be7949ab25bc3271555ed, type: 3}
       propertyPath: m_Name
       value: SM_hotdog_truck (1)
@@ -83251,7 +83350,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.8113208, g: 0.2028302, b: 0.2028302, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -83815,7 +83914,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -85777,11 +85876,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 735420772}
     m_Modifications:
+    - target: {fileID: 7658859995367518329, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
+    - target: {fileID: 7658859995367518329, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
+      propertyPath: 'm_Materials.Array.data[10]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacaa865986cecf4985be24fec7aeea2, type: 2}
     - target: {fileID: 8163127157631685036, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
       propertyPath: m_Name
       value: SM_entrance_park
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 8163127157631685036, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -85799,8 +85905,6 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
     - target: {fileID: 8791748073510095638, guid: e89b9ccd58c1a48408ec4e0a330cf628, type: 3}
       propertyPath: m_RootOrder
       value: 80
@@ -87194,7 +87298,6 @@ SceneRoots:
   - {fileID: 1669558368}
   - {fileID: 735852972}
   - {fileID: 219352225}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   - {fileID: 720770207}
@@ -87204,5 +87307,3 @@ SceneRoots:
 =======
   - {fileID: 1787604979}
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of 70d6aaf (Luceess)
