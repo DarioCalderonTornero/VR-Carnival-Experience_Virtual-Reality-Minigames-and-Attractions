@@ -22352,7 +22352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &681936858
 Transform:
   m_ObjectHideFlags: 0
@@ -22394,7 +22394,6 @@ MonoBehaviour:
   noriaTransform: {fileID: 1803224101}
   noriaSeatTransform: {fileID: 2076446875}
   salidaTransform: {fileID: 2026103925}
-  playerMove: {fileID: 20535288}
 --- !u!65 &681936860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79373,7 +79372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2055993457
 Transform:
   m_ObjectHideFlags: 0

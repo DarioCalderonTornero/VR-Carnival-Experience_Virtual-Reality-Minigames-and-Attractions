@@ -3,8 +3,6 @@ using System.Collections;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Splines;
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Turning;
 
 public class NoriaManager : MonoBehaviour
 {
@@ -18,8 +16,6 @@ public class NoriaManager : MonoBehaviour
     [SerializeField] private Transform noriaSeatTransform;
     [SerializeField] private Transform salidaTransform;
 
-    [SerializeField] private ContinuousMoveProvider playerMove;
-
     private bool isPlaying = false;
     private bool noriaFinished = false;
 
@@ -32,7 +28,6 @@ public class NoriaManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerMove.enabled = false;
             OnNoriaBegin?.Invoke(this, EventArgs.Empty);
             Debug.Log("Player Noria Detected");
 
@@ -59,20 +54,18 @@ public class NoriaManager : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     IEnumerator FinishNoria()
     {
-        yield return new WaitForSeconds(35f);
+        yield return new WaitForSeconds(15f);
 
         FadeController.Instance.FadeIn();
 
         yield return new WaitForSeconds(3f);
 
         FadeOut();
-
-        playerMove.enabled = true;
 
         xrOrigin.transform.SetParent(null);
         xrOrigin.MoveCameraToWorldLocation(salidaTransform.position);
