@@ -6,7 +6,7 @@ public class DuckBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pato"))
         {
-            Duck pato = collision.gameObject.GetComponent<Duck>();
+            Duck2 pato = collision.gameObject.GetComponent<Duck2>();
             if (pato != null && !pato.derribado)
             {
                 pato.Tumbar();

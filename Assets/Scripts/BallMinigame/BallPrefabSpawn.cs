@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BallPrefabSpawn : MonoBehaviour
+public class BallPrefab : MonoBehaviour
 {
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private Transform spawnPoint;

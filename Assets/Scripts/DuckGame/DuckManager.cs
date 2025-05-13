@@ -28,7 +28,7 @@ public class DuckManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             GameObject pato = Instantiate(prefabPato, spawnPatos.position, Quaternion.identity);
-            pato.GetComponent<Duck>().manager = this;
+            pato.GetComponent<Duck2>().manager = this;
             patosInstanciados.Add(pato);
             yield return new WaitForSeconds(Random.Range(0.8f, 1.5f)); 
         }

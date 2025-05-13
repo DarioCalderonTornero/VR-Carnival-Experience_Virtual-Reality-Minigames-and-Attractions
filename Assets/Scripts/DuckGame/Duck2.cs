@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Duck : MonoBehaviour
+public class Duck2 : MonoBehaviour
 {
     public bool derribado = false;
     public DuckManager manager;
