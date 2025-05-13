@@ -9,6 +9,8 @@ TagManager:
   - Duck
   - Ball
   - BeginBaseBall
+  - Suelo
+  - Mesa
   layers:
   - Default
   - TransparentFX
