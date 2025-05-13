@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DEMO SCENE Theme Park.unity
     guid: b823a83c1f22fd34a843c3f319ee7b38
+  - enabled: 1
+    path: Assets/FerCosas/FerPruebas.unity
+    guid: 4de45461df7671c498b137824c96d1b0
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: aceba655cf0041a4599829e92da0f8e8, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
