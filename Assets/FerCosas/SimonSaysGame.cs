@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class SimonSaysGame : MonoBehaviour
 {
-    [Header("Lista de botones (orden: rojo, azul, verde, amarillo...)")]
+    [Header("Lista de botones (ordenados)")]
     public SimonButton[] buttons;
 
-    [Header("Tiempo entre flashes")]
+    [Header("Configuración del juego")]
     public float flashDelay = 1f;
+    public float failDisplayTime = 2f;
+
+    [Header("Detección de proximidad")]
+    public float activationDistance = 2f;
+    public Transform playerTransform;      // El XR Rig o la cámara del jugador
+    public Transform gameCenterPoint;      // Punto central de los botones
 
     private List<int> sequence = new List<int>();
     private int currentStep = 0;
     private bool isPlayerTurn = false;
+    private bool gameStarted = false;
 
-    void Start()
+    void Update()
     {
-        StartCoroutine(StartGame());
+        // Detecta si el jugador se acerca lo suficiente para iniciar el juego
+        if (!gameStarted && Vector3.Distance(playerTransform.position, gameCenterPoint.position) <= activationDistance)
+        {
+            gameStarted = true;
+            StartCoroutine(StartGame());
+        }
     }
 
     IEnumerator StartGame()
     {
+        sequence.Clear();
         yield return new WaitForSeconds(1f);
         AddRandomStep();
         yield return PlaySequence();
@@ -55,17 +68,36 @@ public class SimonSaysGame : MonoBehaviour
             currentStep++;
             if (currentStep >= sequence.Count)
             {
-                // Éxito: siguiente ronda
                 StartCoroutine(NextRound());
             }
         }
         else
         {
-            // Fallo
-            Debug.Log("¡Has fallado! Reiniciando...");
-            sequence.Clear();
-            StartCoroutine(StartGame());
+            StartCoroutine(HandleFailure());
         }
+    }
+
+    IEnumerator HandleFailure()
+    {
+        isPlayerTurn = false;
+
+        // Todos los botones en rojo
+        foreach (var button in buttons)
+        {
+            button.SetColor(Color.red);
+        }
+
+        Debug.Log("¡Has fallado! Reiniciando en " + failDisplayTime + " segundos...");
+
+        yield return new WaitForSeconds(failDisplayTime);
+
+        // Restaurar colores base
+        foreach (var button in buttons)
+        {
+            button.SetColor(button.baseColor);
+        }
+
+        StartCoroutine(StartGame());
     }
 
     IEnumerator NextRound()

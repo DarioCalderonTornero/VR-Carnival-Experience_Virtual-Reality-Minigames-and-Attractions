@@ -43,11 +43,9 @@ public class SimonButton : MonoBehaviour
         SetColor(baseColor);
     }
 
-    private void SetColor(Color color)
+    public void SetColor(Color color)
     {
         if (baseRenderer != null)
-        {
             baseRenderer.material.color = color;
-        }
     }
 }
