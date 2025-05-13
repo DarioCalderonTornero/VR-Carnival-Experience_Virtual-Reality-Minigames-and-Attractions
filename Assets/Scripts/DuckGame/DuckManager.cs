@@ -27,10 +27,10 @@ public class DuckManager : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            GameObject pato = Instantiate(prefabPato, spawnPatos.position, Quaternion.identity);
+            GameObject pato = Instantiate(prefabPato, spawnPatos.position, Quaternion.Euler(-90f, 90f, 0f));
             pato.GetComponent<Duck2>().manager = this;
             patosInstanciados.Add(pato);
-            yield return new WaitForSeconds(Random.Range(0.8f, 1.5f)); 
+            yield return new WaitForSeconds(Random.Range(1.5f, 3f)); 
         }
 
         yield return new WaitForSeconds(3f);

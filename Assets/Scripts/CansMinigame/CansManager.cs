@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class CansManager : MonoBehaviour
 {
@@ -22,14 +23,14 @@ public class CansManager : MonoBehaviour
     private int pelotasUsadas = 0;
     private int latasCaidas = 0;
     private bool enJuego = false;
-    private void Start()
-    {
-        EmpezarMinijuego();
-    }
+
+    [SerializeField] private ContinuousMoveProvider moveProvider;
+
     public void EmpezarMinijuego()
     {
         if (enJuego) return;
 
+        moveProvider.enabled = false;
         enJuego = true;
         pelotasUsadas = 0;
         latasCaidas = 0;
@@ -81,5 +82,7 @@ public class CansManager : MonoBehaviour
     {
         if (jugador != null && zonaSalidaJugador != null)
             jugador.position = zonaSalidaJugador.position;
+
+        moveProvider.enabled = true;
     }
 }

@@ -9,7 +9,7 @@ public class Duck2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = Vector3.right * 2f; 
+        rb.linearVelocity = Vector3.left * 2f;
     }
 
     public void Tumbar()

@@ -11,6 +11,8 @@ TagManager:
   - BeginBaseBall
   - Suelo
   - Mesa
+  - PlayerHand
+  - Pato
   layers:
   - Default
   - TransparentFX

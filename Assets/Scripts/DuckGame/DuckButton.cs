@@ -9,6 +9,7 @@ public class DuckButton : MonoBehaviour
         if (other.CompareTag("PlayerHand")) 
         {
             manager.Disparar();
+            Debug.Log("Funciona");
         }
     }
 }
