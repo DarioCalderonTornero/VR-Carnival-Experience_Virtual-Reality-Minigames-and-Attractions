@@ -4,67 +4,82 @@ using UnityEngine;
 
 public class CansManager : MonoBehaviour
 {
-    public Transform[] posicionesPelotas;
+    [Header("Pelotas")]
     public GameObject pelotaPrefab;
+    public Transform[] posicionesPelotas;
 
-    public List<Can> latas; 
+    [Header("Latas")]
+    public List<Can> latas;
 
-    private int pelotasLanzadas = 0;
-    private int latasDerribadas = 0;
+    [Header("Zona de juego")]
+    public Transform zonaInicialJugador;
+    public Transform zonaSalidaJugador;
+
+    [Header("Jugador")]
+    public Transform jugador;
+
     private List<GameObject> pelotasInstanciadas = new List<GameObject>();
-
-    public Transform mesaPelotas;
-
-    void Start()
+    private int pelotasUsadas = 0;
+    private int latasCaidas = 0;
+    private bool enJuego = false;
+    private void Start()
     {
-        IniciarMinijuego();
+        EmpezarMinijuego();
     }
-
-    public void IniciarMinijuego()
+    public void EmpezarMinijuego()
     {
-        pelotasLanzadas = 0;
-        latasDerribadas = 0;
+        if (enJuego) return;
 
+        enJuego = true;
+        pelotasUsadas = 0;
+        latasCaidas = 0;
+
+        // Resetear latas
         foreach (var lata in latas)
-        {
-            lata.Reiniciar();
-        }
+            lata.Resetear();
 
-        foreach (var p in pelotasInstanciadas)
-        {
-            Destroy(p);
-        }
+        // Eliminar pelotas previas
+        foreach (var pelota in pelotasInstanciadas)
+            Destroy(pelota);
         pelotasInstanciadas.Clear();
 
-        for (int i = 0; i < posicionesPelotas.Length; i++)
+        // Instanciar pelotas nuevas
+        foreach (var pos in posicionesPelotas)
         {
-            GameObject pelota = Instantiate(pelotaPrefab, posicionesPelotas[i].position, Quaternion.identity);
-            pelota.GetComponent<CanBalls>().manager = this;
+            var pelota = Instantiate(pelotaPrefab, pos.position, Quaternion.identity);
+            pelota.GetComponent<CanBalls>().AsignarManager(this);
             pelotasInstanciadas.Add(pelota);
         }
+
+        Debug.Log("Minijuego iniciado.");
     }
 
-    public void NotificarPelotaLanzada()
+    public void PelotaLanzada()
     {
-        pelotasLanzadas++;
-        if (pelotasLanzadas >= 3)
-        {
-            StartCoroutine(FinalizarMinijuegoTrasEspera());
-        }
+        pelotasUsadas++;
+        if (pelotasUsadas >= 3)
+            StartCoroutine(TerminarTrasEspera());
     }
 
-    public void NotificarLataDerribada()
+    public void LataCaida()
     {
-        latasDerribadas++;
+        latasCaidas++;
     }
 
-    IEnumerator FinalizarMinijuegoTrasEspera()
+    private IEnumerator TerminarTrasEspera()
     {
         yield return new WaitForSeconds(5f);
 
-        int puntos = latasDerribadas == 6 ? 10 : latasDerribadas;
-        Debug.Log($"¡Fin del minijuego! Puntos ganados: {puntos}");
+        int puntos = latasCaidas == latas.Count ? 10 : latasCaidas;
+        Debug.Log($"Minijuego terminado. Puntos: {puntos}");
 
-        IniciarMinijuego();
+        MoverJugadorFuera();
+        enJuego = false;
+    }
+
+    private void MoverJugadorFuera()
+    {
+        if (jugador != null && zonaSalidaJugador != null)
+            jugador.position = zonaSalidaJugador.position;
     }
 }

@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class CanBalls : MonoBehaviour
 {
-    public CansManager manager;
-    private bool yaNotificada = false;
+    private CansManager manager;
+    private bool notificada = false;
 
-    void OnCollisionEnter(Collision collision)
+    public void AsignarManager(CansManager m)
     {
-        if (!yaNotificada && collision.gameObject.tag != "Mesa")
+        manager = m;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!notificada && collision.gameObject.tag != "Mesa")
         {
-            yaNotificada = true;
-            manager.NotificarPelotaLanzada();
+            notificada = true;
+            manager?.PelotaLanzada();
         }
     }
 }

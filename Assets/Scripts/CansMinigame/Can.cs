@@ -9,23 +9,23 @@ public class Can : MonoBehaviour
 
     public CansManager manager;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         posicionInicial = transform.position;
         rotacionInicial = transform.rotation;
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!yaContada && other.CompareTag("Suelo"))
         {
             yaContada = true;
-            manager.NotificarLataDerribada();
+            manager?.LataCaida();
         }
     }
 
-    public void Reiniciar()
+    public void Resetear()
     {
         transform.position = posicionInicial;
         transform.rotation = rotacionInicial;
