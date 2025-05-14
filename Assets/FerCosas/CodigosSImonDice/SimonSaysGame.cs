@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class SimonSaysGame : MonoBehaviour
 {
-    [Header("Lista de botones (ordenados)")]
+    [Header("Botones")]
     public SimonButton[] buttons;
 
     [Header("Configuración del juego")]
     public float flashDelay = 1f;
     public float failDisplayTime = 2f;
 
-    [Header("Detección de proximidad")]
+    [Header("Proximidad")]
     public float activationDistance = 2f;
-    public Transform playerTransform;      // Cámara o XR Rig
-    public Transform gameCenterPoint;      // Punto central del minijuego
+    public Transform playerTransform;
+    public Transform gameCenterPoint;
+
+    private SimonSoundManager soundManager;
 
     private List<int> sequence = new List<int>();
     private int currentStep = 0;
     private bool isPlayerTurn = false;
     private bool gameStarted = false;
+
+    void Start()
+    {
+        soundManager = FindFirstObjectByType<SimonSoundManager>();
+    }
 
     void Update()
     {
@@ -50,7 +57,6 @@ public class SimonSaysGame : MonoBehaviour
         isPlayerTurn = false;
         currentStep = 0;
 
-        // Desactivar interacción de botones
         foreach (var button in buttons)
             button.SetInteractable(false);
 
@@ -60,7 +66,6 @@ public class SimonSaysGame : MonoBehaviour
             yield return new WaitForSeconds(flashDelay);
         }
 
-        // Reactivar botones
         foreach (var button in buttons)
             button.SetInteractable(true);
     }
@@ -88,18 +93,17 @@ public class SimonSaysGame : MonoBehaviour
     {
         isPlayerTurn = false;
 
-        // Desactiva botones y los pone en rojo
+        soundManager?.PlayFailSound();
+
         foreach (var button in buttons)
         {
             button.SetInteractable(false);
             button.SetColor(Color.red);
         }
 
-        Debug.Log("¡Has fallado! Reiniciando en " + failDisplayTime + " segundos...");
-
+        Debug.Log("¡Has fallado! Reinicio en " + failDisplayTime + " segundos...");
         yield return new WaitForSeconds(failDisplayTime);
 
-        // Restaurar colores base
         foreach (var button in buttons)
         {
             button.SetColor(button.baseColor);
