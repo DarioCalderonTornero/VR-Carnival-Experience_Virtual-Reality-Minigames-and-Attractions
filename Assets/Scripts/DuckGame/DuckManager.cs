@@ -20,6 +20,9 @@ public class DuckManager : MonoBehaviour
     private int patosDerribados = 0;
     private List<GameObject> patosInstanciados = new List<GameObject>();
 
+    [SerializeField] private ObstáculoMóvil obstaculo;
+    public GameObject[] patos;
+
     public void EmpezarMinijuego()
     {
         if (enJuego) return;
@@ -27,6 +30,7 @@ public class DuckManager : MonoBehaviour
         enJuego = true;
         tiempoRestante = duracionMinijuego;
         patosDerribados = 0;
+        obstaculo.IniciarMovimiento();
         StartCoroutine(MinijuegoPorTiempo());
     }
 
@@ -36,7 +40,8 @@ public class DuckManager : MonoBehaviour
 
         while (Time.time - tiempoInicio < duracionMinijuego)
         {
-            GameObject pato = Instantiate(prefabPato, spawnPatos.position, Quaternion.Euler(-90f, 90f, 180f));
+            GameObject prefabAleatorio = patos[Random.Range(0, patos.Length)];
+            GameObject pato = Instantiate(prefabAleatorio, spawnPatos.position, Quaternion.Euler(-90f, 90f, 180f));
             pato.GetComponent<Duck2>().manager = this;
             patosInstanciados.Add(pato);
 
@@ -71,8 +76,9 @@ public class DuckManager : MonoBehaviour
     void FinalizarMinijuego()
     {
         enJuego = false;
+        obstaculo.DetenerMovimiento();
 
-        int puntos = patosDerribados >= 10 ? 10 : patosDerribados;
+        int puntos = patosDerribados;
         Debug.Log("Minijuego terminado. Puntos: " + puntos);
 
         foreach (var pato in patosInstanciados)
