@@ -9469,6 +9469,7 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   flashColor: {r: 0, g: 0.008504391, b: 1, a: 1}
   buttonID: 1
+  interactableEnabled: 1
 --- !u!114 &279585125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46038,6 +46039,7 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   flashColor: {r: 0.088113785, g: 1, b: 0, a: 1}
   buttonID: 2
+  interactableEnabled: 1
 --- !u!114 &1219099874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61234,6 +61236,7 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   flashColor: {r: 1, g: 0.8296584, b: 0, a: 1}
   buttonID: 3
+  interactableEnabled: 1
 --- !u!114 &1574767480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75918,6 +75921,7 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   buttonID: 0
+  interactableEnabled: 1
 --- !u!114 &1864118295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78297,11 +78301,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1864118299}
   - {fileID: 1817003547}
-  - {fileID: 1574767478}
-  - {fileID: 1219099872}
+  - {fileID: 1864118299}
   - {fileID: 279585123}
+  - {fileID: 1219099872}
+  - {fileID: 1574767478}
   - {fileID: 120999482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

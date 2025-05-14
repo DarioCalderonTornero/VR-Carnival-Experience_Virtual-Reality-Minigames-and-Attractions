@@ -1,18 +1,20 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
+
 
 public class SimonButton : MonoBehaviour
 {
-    [Header("Referencia al objeto base del botón")]
+    [Header("Referencia al objeto base del botï¿½n")]
     public Renderer baseRenderer;
 
     [Header("Color normal y color iluminado")]
     public Color baseColor;
     public Color flashColor = Color.white;
 
-    [Header("ID del botón")]
+    [Header("ID del botï¿½n")]
     public int buttonID;
+
+    [HideInInspector]
+    public bool interactableEnabled = true;
 
     private SimonSaysGame gameManager;
 
@@ -21,13 +23,16 @@ public class SimonButton : MonoBehaviour
         gameManager = FindObjectOfType<SimonSaysGame>();
         SetColor(baseColor);
 
-        var interactable = GetComponent<XRSimpleInteractable>();
+        var interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
         if (interactable != null)
             interactable.selectEntered.AddListener(_ => OnPressed());
     }
 
     public void OnPressed()
     {
+        if (!interactableEnabled)
+            return;
+
         gameManager?.ReceivePlayerInput(buttonID);
     }
 
@@ -47,5 +52,10 @@ public class SimonButton : MonoBehaviour
     {
         if (baseRenderer != null)
             baseRenderer.material.color = color;
+    }
+
+    public void SetInteractable(bool value)
+    {
+        interactableEnabled = value;
     }
 }

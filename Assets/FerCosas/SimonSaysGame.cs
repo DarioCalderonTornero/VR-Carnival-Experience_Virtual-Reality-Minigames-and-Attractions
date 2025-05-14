@@ -13,8 +13,8 @@ public class SimonSaysGame : MonoBehaviour
 
     [Header("Detección de proximidad")]
     public float activationDistance = 2f;
-    public Transform playerTransform;      // El XR Rig o la cámara del jugador
-    public Transform gameCenterPoint;      // Punto central de los botones
+    public Transform playerTransform;      // Cámara o XR Rig
+    public Transform gameCenterPoint;      // Punto central del minijuego
 
     private List<int> sequence = new List<int>();
     private int currentStep = 0;
@@ -23,7 +23,6 @@ public class SimonSaysGame : MonoBehaviour
 
     void Update()
     {
-        // Detecta si el jugador se acerca lo suficiente para iniciar el juego
         if (!gameStarted && Vector3.Distance(playerTransform.position, gameCenterPoint.position) <= activationDistance)
         {
             gameStarted = true;
@@ -51,11 +50,19 @@ public class SimonSaysGame : MonoBehaviour
         isPlayerTurn = false;
         currentStep = 0;
 
+        // Desactivar interacción de botones
+        foreach (var button in buttons)
+            button.SetInteractable(false);
+
         foreach (int id in sequence)
         {
             buttons[id].Flash();
             yield return new WaitForSeconds(flashDelay);
         }
+
+        // Reactivar botones
+        foreach (var button in buttons)
+            button.SetInteractable(true);
     }
 
     public void ReceivePlayerInput(int buttonID)
@@ -81,9 +88,10 @@ public class SimonSaysGame : MonoBehaviour
     {
         isPlayerTurn = false;
 
-        // Todos los botones en rojo
+        // Desactiva botones y los pone en rojo
         foreach (var button in buttons)
         {
+            button.SetInteractable(false);
             button.SetColor(Color.red);
         }
 
