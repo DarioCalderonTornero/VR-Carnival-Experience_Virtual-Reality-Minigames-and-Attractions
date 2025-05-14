@@ -27,10 +27,10 @@ public class DuckManager : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            GameObject pato = Instantiate(prefabPato, spawnPatos.position, Quaternion.Euler(-90f, 90f, 0f));
+            yield return new WaitForSeconds(Random.Range(1.5f, 8f)); 
+            GameObject pato = Instantiate(prefabPato, spawnPatos.position, Quaternion.Euler(-90f, 90f, 180f));
             pato.GetComponent<Duck2>().manager = this;
             patosInstanciados.Add(pato);
-            yield return new WaitForSeconds(Random.Range(1.5f, 3f)); 
         }
 
         yield return new WaitForSeconds(3f);
@@ -42,7 +42,7 @@ public class DuckManager : MonoBehaviour
         if (!puedeDisparar) return;
 
         GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, puntoDisparo.rotation);
-        bala.GetComponent<Rigidbody>().linearVelocity = puntoDisparo.forward * 20f;
+        bala.GetComponent<Rigidbody>().linearVelocity = puntoDisparo.forward * 10f;
 
         puedeDisparar = false;
         StartCoroutine(ReactivarDisparo());

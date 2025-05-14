@@ -6,7 +6,7 @@ public class DuckButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerHand")) 
+        if (other.gameObject.CompareTag("PlayerHand")) 
         {
             manager.Disparar();
             Debug.Log("Funciona");

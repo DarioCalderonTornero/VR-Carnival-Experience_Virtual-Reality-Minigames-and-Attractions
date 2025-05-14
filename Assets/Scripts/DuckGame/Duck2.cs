@@ -5,11 +5,27 @@ public class Duck2 : MonoBehaviour
     public bool derribado = false;
     public DuckManager manager;
     private Rigidbody rb;
+    public Vector3 destino;
+    public float velocidad;
 
     void Start()
     {
+        velocidad = Random.Range(0.8f, 1f);
         rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = Vector3.left * 2f;
+        destino = new Vector3(-8f, transform.position.y, transform.position.z);  
+    }
+
+    void Update()
+    {
+        if (!derribado)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
+
+            if (transform.position == destino)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     public void Tumbar()
@@ -18,7 +34,7 @@ public class Duck2 : MonoBehaviour
         manager.NotificarPatoDerribado();
         rb.linearVelocity = Vector3.zero;
         rb.useGravity = true;
-        rb.AddForce(Vector3.down * 3f, ForceMode.Impulse);
-        transform.Rotate(Vector3.forward * 90f); 
+        rb.AddForce(Vector3.back * 7f, ForceMode.Impulse);
+        // transform.Rotate(Vector3.forward * 90f);
     }
 }
