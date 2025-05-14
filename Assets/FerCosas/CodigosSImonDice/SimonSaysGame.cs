@@ -21,7 +21,8 @@ public class SimonSaysGame : MonoBehaviour
     private List<int> sequence = new List<int>();
     private int currentStep = 0;
     private bool isPlayerTurn = false;
-    private bool gameStarted = false;
+    private bool gameRunning = false;
+    private bool hasEnteredProximity = false;
 
     void Start()
     {
@@ -30,15 +31,39 @@ public class SimonSaysGame : MonoBehaviour
 
     void Update()
     {
-        if (!gameStarted && Vector3.Distance(playerTransform.position, gameCenterPoint.position) <= activationDistance)
+        float distance = Vector3.Distance(playerTransform.position, gameCenterPoint.position);
+
+        if (!hasEnteredProximity && distance <= activationDistance)
         {
-            gameStarted = true;
+            hasEnteredProximity = true;
             StartCoroutine(StartGame());
         }
+        else if (hasEnteredProximity && distance > activationDistance + 0.5f) // un poco más de margen
+        {
+            ResetGame();
+        }
+    }
+
+    void ResetGame()
+    {
+        StopAllCoroutines();
+        hasEnteredProximity = false;
+        gameRunning = false;
+        isPlayerTurn = false;
+        sequence.Clear();
+
+        foreach (var button in buttons)
+        {
+            button.SetInteractable(false);
+            button.SetColor(button.baseColor);
+        }
+
+        Debug.Log("Jugador se alejó. El minijuego se ha reiniciado.");
     }
 
     IEnumerator StartGame()
     {
+        gameRunning = true;
         sequence.Clear();
         yield return new WaitForSeconds(1f);
         AddRandomStep();
@@ -105,9 +130,7 @@ public class SimonSaysGame : MonoBehaviour
         yield return new WaitForSeconds(failDisplayTime);
 
         foreach (var button in buttons)
-        {
             button.SetColor(button.baseColor);
-        }
 
         StartCoroutine(StartGame());
     }
