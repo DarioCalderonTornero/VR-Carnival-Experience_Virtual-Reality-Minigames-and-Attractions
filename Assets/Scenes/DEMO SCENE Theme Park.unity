@@ -1515,7 +1515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerFillImage: {fileID: 49166846}
-  duration: 10
+  duration: 30
   canvasGroup: {fileID: 49166845}
 --- !u!114 &49166844
 MonoBehaviour:
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 2067910831}
-  localOffset: {x: -7.39, y: 1.84, z: 5.56}
+  localOffset: {x: 2, y: 1, z: 2}
 --- !u!225 &49166845
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23722,6 +23722,9 @@ MonoBehaviour:
   - {fileID: 1919990169}
   - {fileID: 1919990168}
   delayBetweenHammers: 0.4
+  cam: {fileID: 1251651648}
+  targetTransform: {fileID: 1774255553}
+  playerBody: {fileID: 1426417729}
 --- !u!65 &618142554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31993,6 +31996,7 @@ Transform:
   - {fileID: 12451613}
   - {fileID: 1675429443}
   - {fileID: 401489609}
+  - {fileID: 1774255553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &871062951
@@ -72525,6 +72529,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5100030199680652199, guid: 6015e38ec681e754887b2c039c0779f9, type: 3}
   m_PrefabInstance: {fileID: 1986227009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1774255552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774255553}
+  m_Layer: 0
+  m_Name: HammerTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774255553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774255552}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.7400436, y: -6.3137836, z: 64.81951}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 870066981}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1776024306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1415292637612528313, guid: 6ffbf3504c862c74dac0d558d061b820, type: 3}
