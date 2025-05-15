@@ -14,8 +14,8 @@ public class CountDownTopos : MonoBehaviour
 
     private void BeginTopos_OnBeginTopos(object sender, System.EventArgs e)
     {
-        StartCoroutine(CountDown());
         countdownText.gameObject.SetActive(true);
+        StartCoroutine(CountDown());
     }
 
     private IEnumerator CountDown()
