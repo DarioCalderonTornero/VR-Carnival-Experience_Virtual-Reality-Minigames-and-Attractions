@@ -9,5 +9,12 @@ public class ToposManager : MonoBehaviour
     public void StartToposMinigame()
     {
         startMinigame = true;
+        playerMove.enabled = false;
+    }
+
+    public void StopToposMinigame()
+    {
+        startMinigame = false;
+        playerMove.enabled = true;
     }
 }
