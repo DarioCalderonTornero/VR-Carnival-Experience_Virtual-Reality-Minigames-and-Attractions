@@ -1,9 +1,20 @@
+using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class BeginTopos : MonoBehaviour
 {
+    public static BeginTopos Instance { get; private set; }
+
+    public event EventHandler OnBeginTopos;
+
     [SerializeField] private GameObject[] hammerGameObjects;
+    [SerializeField] private float delayBetweenHammers = 1f;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -14,24 +25,34 @@ public class BeginTopos : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Begin Topos");
-            ShowHammers();
+            StartCoroutine(ShowHammersWithDelay());
         }
     }
 
-    private void ShowHammers()
+    private IEnumerator ShowHammersWithDelay()
     {
         foreach (var ham in hammerGameObjects)
         {
-            ham.gameObject.SetActive(true);
+            ham.SetActive(true);
+
+            // Activar partículas si existen
+            ParticleSystem ps = ham.GetComponentInChildren<ParticleSystem>();
+            if (ps != null)
+            {
+                ps.Play();
+            }
+
+            yield return new WaitForSeconds(delayBetweenHammers);
         }
+
+        OnBeginTopos?.Invoke(this, EventArgs.Empty);
     }
 
     private void HideHammers()
     {
         foreach (var ham in hammerGameObjects)
         {
-            ham.gameObject.SetActive(false);
+            ham.SetActive(false);
         }
     }
 }
