@@ -10,12 +10,19 @@ public class CountDownTopos : MonoBehaviour
     {
         countdownText.gameObject.SetActive(false);
         BeginTopos.Instance.OnBeginTopos += BeginTopos_OnBeginTopos;
+        Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
+    }
+
+    private void Hammer_OnHammerTriggered()
+    {
+        countdownText.gameObject.SetActive(true);
+        StartCoroutine(CountDown());
     }
 
     private void BeginTopos_OnBeginTopos(object sender, System.EventArgs e)
     {
-        countdownText.gameObject.SetActive(true);
-        StartCoroutine(CountDown());
+        //countdownText.gameObject.SetActive(true);
+        //StartCoroutine(CountDown());
     }
 
     private IEnumerator CountDown()
