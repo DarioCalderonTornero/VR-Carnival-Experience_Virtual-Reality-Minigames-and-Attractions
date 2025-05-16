@@ -7,7 +7,7 @@ public class ToposSpawner : MonoBehaviour
 
     [Header("Topos")]
     [SerializeField] private GameObject goldenTopo;
-    [SerializeField] private GameObject normalTopo;
+    [SerializeField] private GameObject[] normalTopo;
     [SerializeField] private GameObject redTopo;
 
     [Header("Spawn General")]
@@ -20,7 +20,7 @@ public class ToposSpawner : MonoBehaviour
 
     private void Start()
     {
-        TimerTopos.Instance.OnImageFillAmount += TimerTopos_OnImageFillAmount;
+        //TimerTopos.Instance.OnImageFillAmount += TimerTopos_OnImageFillAmount;
         Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
     }
 
@@ -29,11 +29,13 @@ public class ToposSpawner : MonoBehaviour
         StartCoroutine(SpawnerLoop());
     }
 
+    /*
     private void TimerTopos_OnImageFillAmount(object sender, System.EventArgs e)
     {
         spawningActive = false;
         StopAllCoroutines();
     }
+    */
 
     public void BeginSpawn()
     {
@@ -107,11 +109,20 @@ public class ToposSpawner : MonoBehaviour
         float rand = Random.value;
 
         if (rand < 0.7f)
-            return normalTopo;
+        {
+            // Elegir un topo normal aleatorio
+            int index = Random.Range(0, normalTopo.Length);
+            return normalTopo[index];
+        }
         else if (rand < 0.9f)
+        {
             return redTopo;
+        }
         else
+        {
             return goldenTopo;
+        }
     }
+
 
 }
