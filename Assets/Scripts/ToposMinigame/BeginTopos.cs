@@ -74,6 +74,7 @@ public class BeginTopos : MonoBehaviour
         pickUpHammerText.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
         pickUpHammerText.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 
     private void RotatePlayerToTarget()

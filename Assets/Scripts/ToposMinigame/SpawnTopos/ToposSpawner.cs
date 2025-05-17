@@ -20,15 +20,25 @@ public class ToposSpawner : MonoBehaviour
 
     private void Start()
     {
+        BeginSpawn();
         StartCoroutine(SpawnerLoop());
+        CountDownTopos.Instance.OnCountDownFinish += CountDownTopos_OnCountDownFinish;
         //TimerTopos.Instance.OnImageFillAmount += TimerTopos_OnImageFillAmount;
-        Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
+        //Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
     }
 
+    private void CountDownTopos_OnCountDownFinish(object sender, System.EventArgs e)
+    {
+        BeginSpawn();
+        StartCoroutine(SpawnerLoop());
+    }
+
+    /*
     private void Hammer_OnHammerTriggered()
     {
         StartCoroutine(SpawnerLoop());
     }
+    */
 
     /*
     private void TimerTopos_OnImageFillAmount(object sender, System.EventArgs e)
@@ -67,17 +77,17 @@ public class ToposSpawner : MonoBehaviour
         if (time < 20f)
         {
             maxToposSimultaneous = 2;
-            spawnInterval = 1.5f;
+            spawnInterval = .5f;
         }
         else if (time < 40f)
         {
             maxToposSimultaneous = 3;
-            spawnInterval = 1.2f;
+            spawnInterval = .4f;
         }
         else
         {
             maxToposSimultaneous = 4;
-            spawnInterval = 0.9f;
+            spawnInterval = .3f;
         }
     }
 
@@ -87,7 +97,9 @@ public class ToposSpawner : MonoBehaviour
         if (hole == null) return;
 
         GameObject prefab = ChooseRandomTopo();
-        Instantiate(prefab, hole.position, Quaternion.identity);
+        Quaternion modifiedRotation = Quaternion.Euler(-90, 0, -90);
+        Instantiate(prefab, hole.position, modifiedRotation);
+        Debug.Log("Instantiate mole");
     }
 
     private Transform GetRandomFreeHole()
