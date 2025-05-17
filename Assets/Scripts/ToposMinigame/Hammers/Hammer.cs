@@ -15,6 +15,6 @@ public class Hammer : MonoBehaviour
 
         OnHammerTriggered?.Invoke();
 
-        ToposManager.Instance.StartToposMinigame();
+        //ToposManager.Instance.StartToposMinigame();
     }
 }

@@ -19,7 +19,6 @@ public class TimerTopos : MonoBehaviour
     void Start()
     {
         canvasGroup.alpha = 0f;
-        BeginTopos.Instance.OnBeginTopos += BeginTopos_OnBeginTopos;
         Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
     }
 
@@ -28,13 +27,6 @@ public class TimerTopos : MonoBehaviour
         ResetTimer();
         StartFillAmount();
     }
-
-    private void BeginTopos_OnBeginTopos(object sender, System.EventArgs e)
-    {
-        //ResetTimer();
-        //StartFillAmount();
-    }
-
     
 
     private void Update()

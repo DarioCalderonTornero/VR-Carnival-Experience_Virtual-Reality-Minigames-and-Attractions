@@ -20,6 +20,7 @@ public class ToposSpawner : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(SpawnerLoop());
         //TimerTopos.Instance.OnImageFillAmount += TimerTopos_OnImageFillAmount;
         Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
     }

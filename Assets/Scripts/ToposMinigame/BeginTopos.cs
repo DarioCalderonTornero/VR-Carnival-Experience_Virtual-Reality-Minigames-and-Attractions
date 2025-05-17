@@ -1,19 +1,27 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class BeginTopos : MonoBehaviour
 {
     public static BeginTopos Instance { get; private set; }
 
-    public event EventHandler OnBeginTopos;
+    public event EventHandler OnPlayerChooseHammer;
 
     [SerializeField] private GameObject[] hammerGameObjects;
     [SerializeField] private float delayBetweenHammers = 1f;
 
-    [SerializeField] private Camera cam; // La cámara del jugador (cabeza)
-    [SerializeField] private Transform targetTransform; // El transform al que la cámara debe mirar
-    [SerializeField] private Transform playerBody; // El cuerpo del jugador o XR Rig
+    [SerializeField] private Camera cam; 
+    [SerializeField] private Transform targetTransform; 
+    [SerializeField] private Transform playerBody;
+
+    [SerializeField] private ContinuousMoveProvider playerMove;
+
+    [SerializeField] private TextMeshProUGUI pickUpHammerText;
+
+    private bool lookHammersOnce = false;
 
     private void Awake()
     {
@@ -23,14 +31,20 @@ public class BeginTopos : MonoBehaviour
     private void Start()
     {
         HideHammers();
+        pickUpHammerText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            RotatePlayerToTarget(); // Rota todo el XR Rig o jugador
+            if (!lookHammersOnce)
+            {
+                RotatePlayerToTarget();
+
+            }
             StartCoroutine(ShowHammersWithDelay());
+            playerMove.enabled = false; 
         }
     }
 
@@ -51,7 +65,15 @@ public class BeginTopos : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenHammers);
         }
 
-        OnBeginTopos?.Invoke(this, EventArgs.Empty);
+        playerMove.enabled = true;
+        StartCoroutine(Show_HideHammer());
+    }
+
+    private IEnumerator Show_HideHammer()
+    {
+        pickUpHammerText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        pickUpHammerText.gameObject.SetActive(false);
     }
 
     private void RotatePlayerToTarget()
@@ -61,6 +83,8 @@ public class BeginTopos : MonoBehaviour
 
         // Rotar el objeto que contiene la cámara 
         StartCoroutine(RotateOverTime(targetRotation));
+
+        lookHammersOnce = true;
     }
 
     private IEnumerator RotateOverTime(Quaternion targetRotation)
