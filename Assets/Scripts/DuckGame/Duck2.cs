@@ -8,11 +8,15 @@ public class Duck2 : MonoBehaviour
     public Vector3 destino;
     public float velocidad;
 
+    public float ValorX;
+    public float ValorY;
+    public float ValorZ;
+
     void Start()
     {
         velocidad = Random.Range(0.8f, 1f);
         rb = GetComponent<Rigidbody>();
-        destino = new Vector3(-8f, transform.position.y, transform.position.z);  
+        destino = new Vector3(ValorX, ValorY, ValorZ);  
     }
 
     void Update()

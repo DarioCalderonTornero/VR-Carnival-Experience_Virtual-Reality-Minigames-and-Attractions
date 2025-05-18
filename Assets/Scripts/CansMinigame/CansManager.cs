@@ -81,38 +81,39 @@ public class CansManager : MonoBehaviour
     IEnumerator GenerarEstructuraAleatoria()
     {
         yield return new WaitForSeconds(1f);
-        
+
+        // Eliminar latas anteriores
         foreach (var lata in latas)
         {
-            if (lata != null && lata.gameObject != null) 
+            if (lata != null && lata.gameObject != null)
             {
-                Destroy(lata.gameObject); 
+                Destroy(lata.gameObject);
             }
         }
         latas.Clear();
 
-        if (zonaEstructuraLatas != null && zonaEstructuraLatas.gameObject != null)
+        // Eliminar estructura anterior (si existe algo dentro)
+        foreach (Transform child in zonaEstructuraLatas)
         {
-            Destroy(zonaEstructuraLatas.gameObject); 
-        }
-        else
-        {
-            Debug.LogWarning("El contenedor de latas ya ha sido destruido o no existe.");
+            Destroy(child.gameObject);
         }
 
+        // Elegir estructura aleatoria y colocarla en la zona correcta
         int indexAleatorio = Random.Range(0, estructurasLatasPrefabs.Length);
         GameObject estructuraSeleccionada = estructurasLatasPrefabs[indexAleatorio];
 
-        GameObject nuevaEstructura = Instantiate(estructuraSeleccionada, zonaEstructuraLatas.position, Quaternion.identity);
+        // Instanciar como hija de zonaEstructuraLatas y resetear su posición local
+        GameObject nuevaEstructura = Instantiate(estructuraSeleccionada, zonaEstructuraLatas);
+        nuevaEstructura.transform.localPosition = Vector3.zero;
+        nuevaEstructura.transform.localRotation = Quaternion.identity;
 
-        zonaEstructuraLatas = nuevaEstructura.transform;
-
-        latas.AddRange(nuevaEstructura.GetComponentsInChildren<Can>());  
+        // Registrar las latas instanciadas
+        latas.AddRange(nuevaEstructura.GetComponentsInChildren<Can>());
 
         StartCoroutine(DestruirBolas());
     }
 
-public void PelotaLanzada()
+    public void PelotaLanzada()
     {
         pelotasUsadas++;
         if (pelotasUsadas >= 3)

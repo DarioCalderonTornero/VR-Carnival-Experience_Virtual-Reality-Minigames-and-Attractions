@@ -11,6 +11,8 @@ public class Can : MonoBehaviour
 
     private void Awake()
     {
+       manager = Object.FindFirstObjectByType<CansManager>();
+        
         rb = GetComponent<Rigidbody>();
         posicionInicial = transform.position;
         rotacionInicial = transform.rotation;

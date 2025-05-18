@@ -41,7 +41,7 @@ public class DuckManager : MonoBehaviour
         while (Time.time - tiempoInicio < duracionMinijuego)
         {
             GameObject prefabAleatorio = patos[Random.Range(0, patos.Length)];
-            GameObject pato = Instantiate(prefabAleatorio, spawnPatos.position, Quaternion.Euler(-90f, 90f, 180f));
+            GameObject pato = Instantiate(prefabAleatorio, spawnPatos.position, Quaternion.Euler(-90f, 100f, 180f));
             pato.GetComponent<Duck2>().manager = this;
             patosInstanciados.Add(pato);
 
