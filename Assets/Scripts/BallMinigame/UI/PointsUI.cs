@@ -7,11 +7,18 @@ public class PointsUI : MonoBehaviour
     private void Start()
     {
         Duck.Instance.OnBallDetected += Duck_OnBallDetected;
+        Topo.OnAnyTopoDestroyed += Topo_OnAnyTopoDestroyed;
+    }
+
+    private void Topo_OnAnyTopoDestroyed(object sender, System.EventArgs e)
+    {
+        myAnimator.SetTrigger("TopoHit");
     }
 
     private void Duck_OnBallDetected(object sender, System.EventArgs e)
     {
-        Debug.Log("Event completed");
-        myAnimator.SetBool("DuckHit", true);
+        myAnimator.SetTrigger("TopoHit");
     }
+
+
 }

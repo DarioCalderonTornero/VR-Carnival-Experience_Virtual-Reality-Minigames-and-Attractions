@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2676139860222625785}
   - component: {fileID: 1829542793753605677}
+  - component: {fileID: -5081184047051930798}
   m_Layer: 0
   m_Name: Mole.013
   m_TagString: Topo
@@ -55,6 +56,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 2
+  moveAmount: 0.5
+  timeWithoutMove: 0.3
+--- !u!65 &-5081184047051930798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50028583763700128}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.029788611, y: 0.021184182, z: 0.025720853}
+  m_Center: {x: -0.0012671993, y: 0.00045595987, z: 0.0117040565}
 --- !u!1 &989130574225058699
 GameObject:
   m_ObjectHideFlags: 0

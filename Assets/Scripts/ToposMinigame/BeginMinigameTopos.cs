@@ -26,7 +26,8 @@ public class BeginMinigameTopos : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && beginMinigame)
+        //&& beginMinigame
+        if (other.CompareTag("Player") )
         {
             Debug.Log("StartMinigame");
             OnBeginMinigameTopos?.Invoke(this,EventArgs.Empty);
