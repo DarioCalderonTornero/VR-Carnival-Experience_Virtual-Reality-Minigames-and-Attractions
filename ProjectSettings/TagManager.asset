@@ -16,6 +16,7 @@ TagManager:
   - Bola
   - Topo
   - Hammer
+  - Controller
   layers:
   - Default
   - TransparentFX
