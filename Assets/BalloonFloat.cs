@@ -29,13 +29,13 @@ public class BalloonFloat : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Controller"))
+        if (other.CompareTag("PlayerHand"))
         {
             if (explosionFX != null)
             {
                 Instantiate(explosionFX, transform.position, Quaternion.identity);
             }
-
+            Debug.Log("Explota");
             Destroy(gameObject);
         }
     }

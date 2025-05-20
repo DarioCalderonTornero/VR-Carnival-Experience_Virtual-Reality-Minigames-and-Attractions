@@ -137,9 +137,16 @@ public class CansManager : MonoBehaviour
         int puntos = latasCaidasTotales;
         Debug.Log($"Minijuego terminado. Puntos totales: {puntos}");
 
+        FadeController.Instance.FadeIn();
+
+        yield return new WaitForSeconds(1f);
+
         MoverJugadorFuera();
 
-        
+        yield return new WaitForSeconds(1f);
+
+        FadeController.Instance.FadeOut();
+
         enJuego = false;
         temporizadorActivo = false;
 

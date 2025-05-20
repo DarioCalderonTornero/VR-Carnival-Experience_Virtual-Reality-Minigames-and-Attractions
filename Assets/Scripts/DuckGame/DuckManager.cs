@@ -28,6 +28,9 @@ public class DuckManager : MonoBehaviour
     [SerializeField] private Transform jugador;
     [SerializeField] private Transform zonaSalidaJugador;
 
+    [SerializeField] private GameObject esferaIzq;
+    [SerializeField] private GameObject esferaDer;
+
     public void EmpezarMinijuego()
     {
         if (enJuego) return;
@@ -39,6 +42,9 @@ public class DuckManager : MonoBehaviour
         StartCoroutine(MinijuegoPorTiempo());
 
         moveProvider.enabled = false;
+
+        esferaDer.gameObject.SetActive(true);
+        esferaIzq.gameObject.SetActive(true);
     }
 
     IEnumerator MinijuegoPorTiempo()
@@ -85,6 +91,9 @@ public class DuckManager : MonoBehaviour
         enJuego = false;
         obstaculo.DetenerMovimiento();
 
+        esferaDer.gameObject.SetActive(false);
+        esferaIzq.gameObject.SetActive(false);
+
         MoverJugadorFuera();
 
         int puntos = patosDerribados;
@@ -104,5 +113,6 @@ public class DuckManager : MonoBehaviour
             jugador.position = zonaSalidaJugador.position;
 
         moveProvider.enabled = true;
+
     }
 }

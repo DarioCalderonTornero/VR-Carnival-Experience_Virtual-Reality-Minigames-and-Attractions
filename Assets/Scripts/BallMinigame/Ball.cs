@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour
 
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0.5f);
 
         manager.OnBallDestroyed();
         Destroy(gameObject);
