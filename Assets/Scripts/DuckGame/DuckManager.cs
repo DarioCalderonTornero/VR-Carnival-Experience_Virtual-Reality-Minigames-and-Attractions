@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class DuckManager : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class DuckManager : MonoBehaviour
     [SerializeField] private ObstáculoMóvil obstaculo;
     public GameObject[] patos;
 
+    [SerializeField] private ContinuousMoveProvider moveProvider;
+    [SerializeField] private Transform jugador;
+    [SerializeField] private Transform zonaSalidaJugador;
+
     public void EmpezarMinijuego()
     {
         if (enJuego) return;
@@ -32,6 +37,8 @@ public class DuckManager : MonoBehaviour
         patosDerribados = 0;
         obstaculo.IniciarMovimiento();
         StartCoroutine(MinijuegoPorTiempo());
+
+        moveProvider.enabled = false;
     }
 
     IEnumerator MinijuegoPorTiempo()
@@ -78,6 +85,8 @@ public class DuckManager : MonoBehaviour
         enJuego = false;
         obstaculo.DetenerMovimiento();
 
+        MoverJugadorFuera();
+
         int puntos = patosDerribados;
         Debug.Log("Minijuego terminado. Puntos: " + puntos);
 
@@ -87,5 +96,13 @@ public class DuckManager : MonoBehaviour
                 Destroy(pato);
         }
         patosInstanciados.Clear();
+    }
+
+    private void MoverJugadorFuera()
+    {
+        if (jugador != null && zonaSalidaJugador != null)
+            jugador.position = zonaSalidaJugador.position;
+
+        moveProvider.enabled = true;
     }
 }
