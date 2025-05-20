@@ -6,8 +6,7 @@ public class Duck : MonoBehaviour
 {
     public static Duck Instance { get; private set; }
 
-    public event EventHandler OnBallDetected;
-
+    public static event EventHandler OnAnyDuckDetected;
     private void Awake()
     {
         Instance = this;
@@ -18,7 +17,7 @@ public class Duck : MonoBehaviour
         if (collision.collider.CompareTag("Ball"))
         {
             Debug.Log("DuckDetected");
-            OnBallDetected?.Invoke(this, EventArgs.Empty);
+            OnAnyDuckDetected?.Invoke(this, EventArgs.Empty);
             StartCoroutine(DestroyDuck());
         }
     }

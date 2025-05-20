@@ -50503,7 +50503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b4d55614a06cd4f8ffabe2461ef1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckGameObject: {fileID: 1872978036}
+  duckGameObject: {fileID: 7179707895240200625, guid: 25af47822fa55dc4591d2afb80b043d0, type: 3}
   duckSpawnPoint:
   - {fileID: 1806893223}
   - {fileID: 1997759316}
@@ -68776,7 +68776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179707895240200625, guid: 25af47822fa55dc4591d2afb80b043d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -72288,7 +72288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179707895240200625, guid: 25af47822fa55dc4591d2afb80b043d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80306,7 +80306,7 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -84011,11 +84011,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80a372068bee1c8499156f156644e796, type: 3}
---- !u!1 &1872978036 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7179707895240200625, guid: 25af47822fa55dc4591d2afb80b043d0, type: 3}
-  m_PrefabInstance: {fileID: 1601118013}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1873222097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88167,7 +88162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179707895240200625, guid: 25af47822fa55dc4591d2afb80b043d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

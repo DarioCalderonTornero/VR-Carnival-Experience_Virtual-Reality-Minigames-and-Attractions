@@ -10,13 +10,13 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        Duck.Instance.OnBallDetected += OnDuckHit;
+        Duck.OnAnyDuckDetected += Duck_OnAnyDuckDetected;
         Timer.Instance.OnImageFillAmount += OnGameEnd;
 
         scoreText.gameObject.SetActive(false);
     }
 
-    private void OnDuckHit(object sender, System.EventArgs e)
+    private void Duck_OnAnyDuckDetected(object sender, System.EventArgs e)
     {
         Debug.Log(score);
         score++;
@@ -43,8 +43,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Duck.Instance != null)
-            Duck.Instance.OnBallDetected -= OnDuckHit;
+        
 
         if (Timer.Instance != null)
             Timer.Instance.OnImageFillAmount -= OnGameEnd;
