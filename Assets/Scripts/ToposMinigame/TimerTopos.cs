@@ -6,15 +6,23 @@ public class TimerTopos : MonoBehaviour
 {
     public static TimerTopos Instance { get; private set; }
 
-    public event EventHandler OnImageFillAmount;
+    public event EventHandler OnTimerFinish;
 
     [SerializeField] private Image timerFillImage;
     [SerializeField] private float duration = 60;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform salidaTransform;
+
     private float currentTime;
 
     [SerializeField] private CanvasGroup canvasGroup;
 
     private bool isRunning;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -26,6 +34,7 @@ public class TimerTopos : MonoBehaviour
 
     private void CountDownTopos_OnCountDownFinish(object sender, EventArgs e)
     {
+        Debug.Log("CountDownFinish");
         ResetTimer();
         StartFillAmount();
     }
@@ -52,14 +61,29 @@ public class TimerTopos : MonoBehaviour
         currentTime -= Time.deltaTime;
         float fill = Mathf.Clamp01(currentTime / duration);
         timerFillImage.fillAmount = fill;
-        Debug.Log(currentTime);
+        //Debug.Log(currentTime);
 
         if (currentTime <= 0f)
         {
+            Debug.Log("TimerFinish");
             StopTimer();
             currentTime = 0f;
-            OnImageFillAmount?.Invoke(this, EventArgs.Empty);
+            FadeController.Instance.FadeIn();
+            Invoke(nameof(TPPlayer), 1.5f);
+            Invoke(nameof(FadeOut), 3f);
+            OnTimerFinish?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    private void TPPlayer()
+    {
+        playerTransform.position = salidaTransform.position;  
+    }
+
+
+    private void FadeOut()
+    {
+        FadeController.Instance.FadeOut();
     }
 
     private void StartFillAmount()
