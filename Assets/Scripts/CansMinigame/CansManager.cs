@@ -56,6 +56,8 @@ public class CansManager : MonoBehaviour
     {
         if (enJuego) return;
 
+        moveProvider.enabled = false;
+
         tiempoRestante = tiempoLimite;
         temporizadorActivo = true;
 

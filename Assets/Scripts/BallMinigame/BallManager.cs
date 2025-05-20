@@ -35,7 +35,8 @@ public class BallManager : MonoBehaviour
     public void EndGame()
     {
         gameActive = false;
-        moveProvider.enabled = true;
+
+        Invoke(nameof(PlayerMove), 5f);
 
         GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
         foreach (GameObject ball in balls)
@@ -48,6 +49,11 @@ public class BallManager : MonoBehaviour
         {
             Destroy(duck);
         }
+    }
+
+    private void PlayerMove()
+    {
+        moveProvider.enabled = true;
     }
 
 

@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/DEMO SCENE Theme Park.unity
     guid: b823a83c1f22fd34a843c3f319ee7b38
-  - enabled: 1
+  - enabled: 0
     path: Assets/FerCosas/FerPruebas.unity
     guid: 4de45461df7671c498b137824c96d1b0
   m_configObjects:

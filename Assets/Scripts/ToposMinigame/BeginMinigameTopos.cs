@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class BeginMinigameTopos : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class BeginMinigameTopos : MonoBehaviour
     public event EventHandler OnBeginMinigameTopos;
 
     private bool beginMinigame = false;
+
+    public ContinuousMoveProvider playerMove;
 
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class BeginMinigameTopos : MonoBehaviour
         {
             Debug.Log("StartMinigame");
             OnBeginMinigameTopos?.Invoke(this,EventArgs.Empty);
+            playerMove.enabled = false;
         }
     }
 }

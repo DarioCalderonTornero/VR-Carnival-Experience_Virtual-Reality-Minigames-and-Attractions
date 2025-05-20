@@ -38,7 +38,7 @@ public class Duck2 : MonoBehaviour
         manager.NotificarPatoDerribado();
         rb.linearVelocity = Vector3.zero;
         rb.useGravity = true;
-        rb.AddForce(Vector3.back * 7f, ForceMode.Impulse);
+        rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         // transform.Rotate(Vector3.forward * 90f);
     }
 }

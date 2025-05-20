@@ -17,7 +17,6 @@ public class BeginTopos : MonoBehaviour
     [SerializeField] private Transform targetTransform; 
     [SerializeField] private Transform playerBody;
 
-    [SerializeField] private ContinuousMoveProvider playerMove;
 
     [SerializeField] private TextMeshProUGUI pickUpHammerText;
 
@@ -40,17 +39,16 @@ public class BeginTopos : MonoBehaviour
         {
             if (!lookHammersOnce)
             {
-                RotatePlayerToTarget();
+                //RotatePlayerToTarget();
 
             }
             StartCoroutine(ShowHammersWithDelay());
-            playerMove.enabled = false; 
         }
     }
 
     private IEnumerator ShowHammersWithDelay()
     {
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
         foreach (var ham in hammerGameObjects)
         {
             ham.SetActive(true);
@@ -65,7 +63,6 @@ public class BeginTopos : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenHammers);
         }
 
-        playerMove.enabled = true;
         StartCoroutine(Show_HideHammer());
     }
 
