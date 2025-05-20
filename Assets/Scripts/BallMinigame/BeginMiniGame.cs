@@ -7,7 +7,7 @@ public class BeginMiniGame : MonoBehaviour
 
     public event EventHandler OnBeginBaseBall;
 
-    private bool started = false;
+    public bool started = false;
 
     private void Awake()
     {
@@ -22,6 +22,7 @@ public class BeginMiniGame : MonoBehaviour
             Debug.Log("Begin BaseBall");
             BallManager.Instance.StartGame();
             started = true;
+            DuckSpawnPrefab.Instance.SpawnDuck();
         }
     }
 }

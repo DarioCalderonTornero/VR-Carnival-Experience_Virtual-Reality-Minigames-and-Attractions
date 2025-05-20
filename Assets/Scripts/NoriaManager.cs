@@ -16,8 +16,8 @@ public class NoriaManager : MonoBehaviour
     [SerializeField] private Transform noriaSeatTransform;
     [SerializeField] private Transform salidaTransform;
 
-    private bool isPlaying = false;
-    private bool noriaFinished = false;
+    [SerializeField] private float noriaTime = 10f;
+
 
     private void Awake()
     {
@@ -29,37 +29,41 @@ public class NoriaManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnNoriaBegin?.Invoke(this, EventArgs.Empty);
-            Debug.Log("Player Noria Detected");
-
-            StartCoroutine(FinishNoria());
-
             FadeController.Instance.FadeIn();
-            Invoke("FadeOut", 3f);
 
-            isPlaying = true;
-            noriaFinished = false;
-
-            xrOrigin.transform.SetParent(noriaSeatTransform, false);
-            xrOrigin.MoveCameraToWorldLocation(noriaSeatTransform.position);
+            StartCoroutine(BeginNoriaRide());
 
             foreach (SplineAnimate spline in noriaSplinesAnimates)
             {
                 if (spline != null)
-                {
                     spline.Play();
-                }
             }
         }
     }
 
-    private void Update()
+    private IEnumerator BeginNoriaRide()
     {
+        yield return new WaitForSeconds(1.5f); 
 
+        xrOrigin.transform.SetParent(null);
+
+        xrOrigin.transform.position = noriaSeatTransform.position;
+        xrOrigin.transform.rotation = noriaSeatTransform.rotation;
+
+        xrOrigin.transform.SetParent(noriaSeatTransform, true);
+
+        yield return new WaitForSeconds(1.5f);
+        FadeOut();
+
+       
+
+        StartCoroutine(FinishNoria());
     }
+
 
     IEnumerator FinishNoria()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(noriaTime);
 
         FadeController.Instance.FadeIn();
 

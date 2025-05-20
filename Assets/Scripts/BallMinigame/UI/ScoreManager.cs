@@ -4,7 +4,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;      // El texto que muestra los puntos
+    [SerializeField] private TextMeshProUGUI scoreText;      
 
     private int score = 0;
 
@@ -18,6 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDuckHit(object sender, System.EventArgs e)
     {
+        Debug.Log(score);
         score++;
     }
 

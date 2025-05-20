@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,10 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private Image timerFillImage;
     [SerializeField] private float duration = 60;
+
+    [SerializeField] private Transform salidaTransform;
+    [SerializeField] private Transform playerTransform;
+
     private float currentTime;
 
     [SerializeField] private CanvasGroup canvasGroup;
@@ -43,14 +48,26 @@ public class Timer : MonoBehaviour
         currentTime -= Time.deltaTime;
         float fill = Mathf.Clamp01(currentTime/duration);
         timerFillImage.fillAmount = fill;
-        Debug.Log(currentTime);
+        //Debug.Log(currentTime);
 
         if (currentTime <= 0f)
         {
             StopTimer();
             currentTime = 0f;
             OnImageFillAmount?.Invoke(this,EventArgs.Empty);
+            StartCoroutine(TPPlayer());
         }
+    }
+
+    private IEnumerator TPPlayer()
+    {
+        yield return new WaitForSeconds(5f);
+        FadeController.Instance.FadeIn();
+        yield return new WaitForSeconds(1f);
+        playerTransform.position = salidaTransform.position;
+        yield return new WaitForSeconds(1f);
+        FadeController.Instance.FadeOut();
+        BeginMiniGame.Instance.started = false;
     }
 
     private void StartFillAmount()
