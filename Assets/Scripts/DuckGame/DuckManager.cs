@@ -97,7 +97,8 @@ public class DuckManager : MonoBehaviour
         MoverJugadorFuera();
 
         int puntos = patosDerribados;
-        Debug.Log("Minijuego terminado. Puntos: " + puntos);
+        Debug.Log("Minijuego patos terminado. Puntos conseguidos: " + puntos);
+        TicketsSystem.Instance.GanaTickets(puntos);
 
         foreach (var pato in patosInstanciados)
         {

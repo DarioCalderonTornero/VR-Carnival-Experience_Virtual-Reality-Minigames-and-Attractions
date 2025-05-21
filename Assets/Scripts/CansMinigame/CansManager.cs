@@ -38,15 +38,18 @@ public class CansManager : MonoBehaviour
     private bool temporizadorActivo = false;
 
     [Header("Posición de las estructuras")]
-    public Transform zonaEstructuraLatas; 
+    public Transform zonaEstructuraLatas;
+
+    private bool minijuegoTerminado = false;
 
     private void Update()
     {
-        if (enJuego && temporizadorActivo)
+        if (enJuego && temporizadorActivo && !minijuegoTerminado)
         {
             tiempoRestante -= Time.deltaTime;
             if (tiempoRestante <= 0f)
             {
+                minijuegoTerminado = true;
                 StartCoroutine(TerminarMinijuego());
             }
         }
@@ -149,6 +152,10 @@ public class CansManager : MonoBehaviour
 
         enJuego = false;
         temporizadorActivo = false;
+
+        TicketsSystem.Instance.GanaTickets(puntos);
+
+        minijuegoTerminado = false;
 
         yield return null;
     }

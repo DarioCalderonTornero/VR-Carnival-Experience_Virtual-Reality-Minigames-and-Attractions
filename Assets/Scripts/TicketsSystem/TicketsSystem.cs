@@ -1,13 +1,21 @@
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class TicketsSystem : MonoBehaviour
 {
-    public int tickets;
+    public static TicketsSystem Instance { get; private set; }
+    
+    public int tickets = 0;
     private float rayDistance = 200;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
-        tickets++;
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, rayDistance))
@@ -24,6 +32,13 @@ public class TicketsSystem : MonoBehaviour
 
 
         }
+    }
+
+    public void GanaTickets(int ticketsGanados)
+    {
+        Debug.Log($"Tickets antes de sumar: {tickets}");
+        tickets += ticketsGanados;
+        Debug.Log($"Tickets sumados: {ticketsGanados}, tickets ahora: {tickets}");
     }
 
 }
