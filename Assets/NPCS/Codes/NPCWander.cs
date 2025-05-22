@@ -24,27 +24,46 @@ public class NPCWander : MonoBehaviour
 
         if (timer >= wanderTimer)
         {
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
+            Vector3 newPos = GetSafeRandomPoint(transform.position, wanderRadius);
+
+            if (Vector3.Distance(transform.position, newPos) > 1.5f) // evita movimientos torpes
+            {
+                agent.SetDestination(newPos);
+            }
+
             timer = 0;
         }
 
         // Animación sincronizada con velocidad
         if (animator != null && agent != null)
         {
-            float currentSpeed = agent.velocity.magnitude / agent.speed; // Normalizado entre 0 y 1
+            float currentSpeed = agent.velocity.magnitude / agent.speed;
             animator.SetFloat("Speed", currentSpeed);
         }
     }
 
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    public static Vector3 GetSafeRandomPoint(Vector3 origin, float radius)
     {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
-        randDirection += origin;
+        for (int i = 0; i < 30; i++) // hasta 30 intentos
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * radius;
+            randomDirection.y = 0;
+            Vector3 candidate = origin + randomDirection;
 
-        NavMeshHit navHit;
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(candidate, out hit, 2.0f, NavMesh.AllAreas))
+            {
+                NavMeshPath path = new NavMeshPath();
+                if (NavMesh.CalculatePath(origin, hit.position, NavMesh.AllAreas, path) &&
+                    path.status == NavMeshPathStatus.PathComplete &&
+                    Vector3.Distance(origin, hit.position) > 1.5f)
+                {
+                    return hit.position;
+                }
+            }
+        }
 
-        return navHit.position;
+        Debug.LogWarning("No se encontró un punto válido en la NavMesh. Usando posición original.");
+        return origin;
     }
 }
