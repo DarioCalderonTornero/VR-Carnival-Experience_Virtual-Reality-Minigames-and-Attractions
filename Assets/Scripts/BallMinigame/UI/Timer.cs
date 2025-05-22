@@ -30,12 +30,11 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         canvasGroup.alpha = 0f;
-        BeginMiniGame.Instance.OnBeginBaseBall += BeginMiniGame_OnBeginBaseBall;
+        BallManager.Instance.OnGameStarted += BallManager_OnGameStarted;
     }
 
-    private void BeginMiniGame_OnBeginBaseBall(object sender, System.EventArgs e)
+    private void BallManager_OnGameStarted(object sender, EventArgs e)
     {
-        Debug.Log("Beginnnnn");
         ResetTimer();
         StartFillAmount();
     }

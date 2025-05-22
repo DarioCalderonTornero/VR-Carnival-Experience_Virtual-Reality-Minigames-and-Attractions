@@ -22,7 +22,7 @@ public class ToposSpawner : MonoBehaviour
     {
         //BeginSpawn();
         //StartCoroutine(SpawnerLoop());
-        CountDownTopos.Instance.OnCountDownFinish += CountDownTopos_OnCountDownFinish;
+        //CountDown.Instance.OnCountDownFinish += CountDownTopos_OnCountDownFinish;
         TimerTopos.Instance.OnTimerFinish += TimerTopos_OnTimerFinish;
         //TimerTopos.Instance.OnImageFillAmount += TimerTopos_OnImageFillAmount;
         //Hammer.OnHammerTriggered += Hammer_OnHammerTriggered;
@@ -35,8 +35,8 @@ public class ToposSpawner : MonoBehaviour
 
     private void CountDownTopos_OnCountDownFinish(object sender, System.EventArgs e)
     {
-        BeginSpawn();
-        StartCoroutine(SpawnerLoop());
+        //BeginSpawn();
+        //StartCoroutine(SpawnerLoop());
     }
 
     /*

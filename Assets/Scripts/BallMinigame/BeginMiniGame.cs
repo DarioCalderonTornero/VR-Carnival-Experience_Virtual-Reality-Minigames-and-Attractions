@@ -22,7 +22,6 @@ public class BeginMiniGame : MonoBehaviour
             Debug.Log("Begin BaseBall");
             BallManager.Instance.StartGame();
             started = true;
-            DuckSpawnPrefab.Instance.SpawnDuck();
         }
     }
 }

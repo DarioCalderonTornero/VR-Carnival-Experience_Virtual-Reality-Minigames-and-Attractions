@@ -1,9 +1,13 @@
-using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
+using UnityEngine;
+using System;
 
-public class BallManager : MonoBehaviour
+public class BallManager : MonoBehaviour, IMinigame
 {
     public static BallManager Instance { get; private set; }
+
+    public event EventHandler OnGameStarted;
+
     [SerializeField] private BallPrefab spawner;
     [SerializeField] private ContinuousMoveProvider moveProvider;
 
@@ -16,7 +20,6 @@ public class BallManager : MonoBehaviour
 
     private void Start()
     {
-        //StartGame(); 
         Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
     }
 
@@ -30,6 +33,9 @@ public class BallManager : MonoBehaviour
         gameActive = true;
         moveProvider.enabled = false;
         spawner.SpawnBall();
+        DuckSpawnPrefab.Instance.SpawnDuck();
+        OnGameStarted?.Invoke(this, EventArgs.Empty);
+        Debug.Log("Minijuego de pelotas iniciado");
     }
 
     public void EndGame()
@@ -38,17 +44,11 @@ public class BallManager : MonoBehaviour
 
         Invoke(nameof(PlayerMove), 5f);
 
-        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
-        foreach (GameObject ball in balls)
-        {
+        foreach (GameObject ball in GameObject.FindGameObjectsWithTag("Ball"))
             Destroy(ball);
-        }
 
-        GameObject[] ducks = GameObject.FindGameObjectsWithTag("Duck");
-        foreach (GameObject duck in ducks)
-        {
+        foreach (GameObject duck in GameObject.FindGameObjectsWithTag("Duck"))
             Destroy(duck);
-        }
     }
 
     private void PlayerMove()
@@ -56,14 +56,9 @@ public class BallManager : MonoBehaviour
         moveProvider.enabled = true;
     }
 
-
     public void OnBallDestroyed()
     {
         if (gameActive)
-        {
             spawner.SpawnBall();
-        }
     }
 }
-
-
