@@ -11,21 +11,29 @@ public class MinigameStarter : MonoBehaviour
     private void Awake()
     {
         interactable = GetComponent<XRBaseInteractable>();
-        interactable.selectEntered.AddListener(OnSelected);
+        interactable.activated.AddListener(OnActivated);
     }
 
     private void OnDestroy()
     {
-        interactable.selectEntered.RemoveListener(OnSelected);
+        interactable.activated.RemoveListener(OnActivated);
     }
 
-    private void OnSelected(SelectEnterEventArgs args)
+    private void OnActivated(ActivateEventArgs args)
     {
-        CountDown.Instance.StartCoroutine(
-            CountDown.Instance.Countdown(() =>
-            {
-                minigameToStart.GetComponent<BallManager>().StartGame();
-            }));
+        BallManager ballManager = minigameToStart.GetComponent<BallManager>();
+
+        if (!ballManager.IsGameActive())
+        {
+            CountDown.Instance.StartCoroutine(
+                CountDown.Instance.Countdown(() =>
+                {
+                    ballManager.StartGame();
+                }));
+        }
+        else
+        {
+            Debug.Log("El minijuego ya está en curso. Espera a que termine.");
+        }
     }
 }
-

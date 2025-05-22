@@ -61,4 +61,7 @@ public class BallManager : MonoBehaviour, IMinigame
         if (gameActive)
             spawner.SpawnBall();
     }
+
+    public bool IsGameActive() => gameActive;
+
 }
