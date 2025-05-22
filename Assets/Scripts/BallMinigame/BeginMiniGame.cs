@@ -27,6 +27,12 @@ public class BeginMiniGame : MonoBehaviour
             BallManager.Instance.StartGame();
             time = 0f;
         }
+
+        if (other.CompareTag("Player") && started)
+        {
+            playerInZone = true;
+            time = 0f;
+        }
     }
 
     private void OnTriggerExit(Collider other)

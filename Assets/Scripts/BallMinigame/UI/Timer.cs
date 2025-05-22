@@ -44,17 +44,25 @@ public class Timer : MonoBehaviour
         if (!isRunning)
             return;
 
-        currentTime -= Time.deltaTime;
-        float fill = Mathf.Clamp01(currentTime/duration);
-        timerFillImage.fillAmount = fill;
-        //Debug.Log(currentTime);
-
-        if (currentTime <= 0f)
+        if (BeginMiniGame.Instance.started)
         {
-            StopTimer();
-            currentTime = 0f;
-            OnImageFillAmount?.Invoke(this,EventArgs.Empty);
-            //StartCoroutine(TPPlayer());
+            currentTime -= Time.deltaTime;
+            float fill = Mathf.Clamp01(currentTime / duration);
+            timerFillImage.fillAmount = fill;
+            //Debug.Log(currentTime);
+
+            if (currentTime <= 0f)
+            {
+                StopTimer();
+                currentTime = 0f;
+                OnImageFillAmount?.Invoke(this, EventArgs.Empty);
+                //StartCoroutine(TPPlayer());
+            }
+        }
+
+        else
+        {
+            canvasGroup.alpha = 0f;
         }
     }
 

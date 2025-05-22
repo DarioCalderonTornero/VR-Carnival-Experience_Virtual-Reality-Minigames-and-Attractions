@@ -25810,6 +25810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 2117158675}
   moveProvider: {fileID: 20535288}
+  gameActive: 0
 --- !u!4 &639329191
 Transform:
   m_ObjectHideFlags: 0
@@ -91891,6 +91892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   started: 0
+  playerInZone: 0
 --- !u!54 &2031045834
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93279,7 +93281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2055993457
 Transform:
   m_ObjectHideFlags: 0

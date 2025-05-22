@@ -52,11 +52,6 @@ public class BallManager : MonoBehaviour, IMinigame
             Destroy(duck);
     }
 
-    private void PlayerMove()
-    {
-        moveProvider.enabled = true;
-    }
-
     public void OnBallDestroyed()
     {
         if (gameActive)
