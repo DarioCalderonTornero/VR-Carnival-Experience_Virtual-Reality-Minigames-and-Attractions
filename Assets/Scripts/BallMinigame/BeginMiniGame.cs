@@ -18,10 +18,7 @@ public class BeginMiniGame : MonoBehaviour
     {
         if (other.CompareTag("Player") && !started)
         {
-            OnBeginBaseBall?.Invoke(this, EventArgs.Empty);
-            Debug.Log("Begin BaseBall");
             BallManager.Instance.StartGame();
-            started = true;
         }
     }
 }

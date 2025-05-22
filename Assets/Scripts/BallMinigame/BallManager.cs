@@ -31,7 +31,7 @@ public class BallManager : MonoBehaviour, IMinigame
     public void StartGame()
     {
         gameActive = true;
-        moveProvider.enabled = false;
+        //moveProvider.enabled = false;
         spawner.SpawnBall();
         DuckSpawnPrefab.Instance.SpawnDuck();
         OnGameStarted?.Invoke(this, EventArgs.Empty);
@@ -42,7 +42,7 @@ public class BallManager : MonoBehaviour, IMinigame
     {
         gameActive = false;
 
-        Invoke(nameof(PlayerMove), 5f);
+        //Invoke(nameof(PlayerMove), 5f);
 
         foreach (GameObject ball in GameObject.FindGameObjectsWithTag("Ball"))
             Destroy(ball);
