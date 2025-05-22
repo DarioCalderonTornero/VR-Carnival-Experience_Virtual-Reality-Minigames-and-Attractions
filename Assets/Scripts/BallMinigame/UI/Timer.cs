@@ -54,7 +54,7 @@ public class Timer : MonoBehaviour
             StopTimer();
             currentTime = 0f;
             OnImageFillAmount?.Invoke(this,EventArgs.Empty);
-            StartCoroutine(TPPlayer());
+            //StartCoroutine(TPPlayer());
         }
     }
 

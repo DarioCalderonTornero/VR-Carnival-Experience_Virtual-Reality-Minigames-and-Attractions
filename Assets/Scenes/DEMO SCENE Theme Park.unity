@@ -60088,7 +60088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.41
+      value: 20.53
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -60096,7 +60096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 49.13
+      value: -26.5
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87848,7 +87848,7 @@ MonoBehaviour:
   - {fileID: 463202471999819958, guid: 8829fdd9624678948bb3031054fa78af, type: 3}
   - {fileID: 295099883240126024, guid: a3c32c052ec1aff4985ff7a0bdfa44db, type: 3}
   - {fileID: 8453706581374832729, guid: adfa96255fb77204191e71a14a9534b6, type: 3}
-  numberOfNPCs: 200
+  numberOfNPCs: 100
   spawnAreaSize: {x: 100, y: 0, z: 100}
   spawnCenter: {x: 0, y: 0, z: -50}
 --- !u!1 &1952620263
@@ -90827,7 +90827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2031045832
 Transform:
   m_ObjectHideFlags: 0

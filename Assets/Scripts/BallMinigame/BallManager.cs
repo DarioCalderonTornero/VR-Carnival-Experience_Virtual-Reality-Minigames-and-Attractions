@@ -11,7 +11,7 @@ public class BallManager : MonoBehaviour, IMinigame
     [SerializeField] private BallPrefab spawner;
     [SerializeField] private ContinuousMoveProvider moveProvider;
 
-    private bool gameActive = false;
+    public bool gameActive = false;
 
     private void Awake()
     {
@@ -21,6 +21,8 @@ public class BallManager : MonoBehaviour, IMinigame
     private void Start()
     {
         Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
+        DuckSpawnPrefab.Instance.SpawnDuck();
+
     }
 
     private void Timer_OnImageFillAmount(object sender, System.EventArgs e)
@@ -33,7 +35,6 @@ public class BallManager : MonoBehaviour, IMinigame
         gameActive = true;
         //moveProvider.enabled = false;
         spawner.SpawnBall();
-        DuckSpawnPrefab.Instance.SpawnDuck();
         OnGameStarted?.Invoke(this, EventArgs.Empty);
         Debug.Log("Minijuego de pelotas iniciado");
     }
