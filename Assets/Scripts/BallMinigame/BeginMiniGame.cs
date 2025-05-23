@@ -66,6 +66,7 @@ public class BeginMiniGame : MonoBehaviour
                 started = false;
                 time = 0;
                 warningEffect.DisableWarningEffect();
+                BackToGameCountDown.Instance.Hide();
             }
         }       
     }
