@@ -5,10 +5,10 @@ public class BeginMiniGame : MonoBehaviour
 {
     public static BeginMiniGame Instance { get; private set; }
 
-    public event EventHandler OnBeginBaseBall;
-
     public bool started = false;
     public bool playerInZone = false;
+
+    [SerializeField] private DangerZoneEffect warningEffect;
 
     float maxTime = 5f;
     float time;
@@ -24,14 +24,16 @@ public class BeginMiniGame : MonoBehaviour
         {
             started = true;
             playerInZone = true;
-            BallManager.Instance.StartGame();
-            time = 0f;
+            //BallManager.Instance.StartGame();
+            time = maxTime;
         }
 
         if (other.CompareTag("Player") && started)
         {
             playerInZone = true;
-            time = 0f;
+            time = maxTime;
+            BackToGameCountDown.Instance.Hide();
+            warningEffect.DisableWarningEffect();
         }
     }
 
@@ -39,7 +41,9 @@ public class BeginMiniGame : MonoBehaviour
     {
         if (other.CompareTag("Player") && started)
         {
-            playerInZone = false;      
+            playerInZone = false;
+            warningEffect.EnableWarningEffect();
+            BackToGameCountDown.Instance.Show();
         }
     }
 
@@ -47,21 +51,34 @@ public class BeginMiniGame : MonoBehaviour
     {
         if (!playerInZone && started)
         {
-            time += Time.deltaTime;
+            time -= Time.deltaTime;
 
             Debug.Log(time);
 
-            if (time < maxTime)
+            if (time > 0)
             {
                 Debug.Log("CountDown");
             }
 
-            if (time >= maxTime)
+            if (time <= 0f)
             {
                 BallManager.Instance.EndGame();
                 started = false;
                 time = 0;
+                warningEffect.DisableWarningEffect();
             }
         }       
+    }
+
+    public float CurrentTime()
+    {
+        return time;
+    }
+
+    public void ForcePlayerInside()
+    {
+        playerInZone = true;
+        time = 0f;
+        Debug.Log("Player ya estaba dentro: zona validada manualmente.");
     }
 }

@@ -1,5 +1,5 @@
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 using System;
 
 public class BallManager : MonoBehaviour, IMinigame
@@ -10,6 +10,8 @@ public class BallManager : MonoBehaviour, IMinigame
 
     [SerializeField] private BallPrefab spawner;
     [SerializeField] private ContinuousMoveProvider moveProvider;
+    [SerializeField] private Transform triggerZoneTransform;
+    [SerializeField] private Transform playerTransform; 
 
     public bool gameActive = false;
 
@@ -22,10 +24,10 @@ public class BallManager : MonoBehaviour, IMinigame
     {
         Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
         DuckSpawnPrefab.Instance.SpawnDuck();
-
+        triggerZoneTransform.gameObject.SetActive(false);
     }
 
-    private void Timer_OnImageFillAmount(object sender, System.EventArgs e)
+    private void Timer_OnImageFillAmount(object sender, EventArgs e)
     {
         EndGame();
     }
@@ -33,17 +35,26 @@ public class BallManager : MonoBehaviour, IMinigame
     public void StartGame()
     {
         gameActive = true;
-        //moveProvider.enabled = false;
+        triggerZoneTransform.gameObject.SetActive(true);
         spawner.SpawnBall();
         OnGameStarted?.Invoke(this, EventArgs.Empty);
         Debug.Log("Minijuego de pelotas iniciado");
+
+        Collider triggerCollider = triggerZoneTransform.GetComponent<Collider>();
+        if (triggerCollider != null && triggerCollider.bounds.Contains(playerTransform.position))
+        {
+            BeginMiniGame beginScript = triggerZoneTransform.GetComponent<BeginMiniGame>();
+            if (beginScript != null)
+            {
+                beginScript.ForcePlayerInside(); 
+            }
+        }
     }
 
     public void EndGame()
     {
         gameActive = false;
-
-        //Invoke(nameof(PlayerMove), 5f);
+        triggerZoneTransform.gameObject.SetActive(false);
 
         foreach (GameObject ball in GameObject.FindGameObjectsWithTag("Ball"))
             Destroy(ball);
@@ -59,5 +70,4 @@ public class BallManager : MonoBehaviour, IMinigame
     }
 
     public bool IsGameActive() => gameActive;
-
 }

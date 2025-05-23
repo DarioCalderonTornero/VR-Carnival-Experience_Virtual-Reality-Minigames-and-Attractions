@@ -66,6 +66,12 @@ public class Timer : MonoBehaviour
         }
     }
 
+    public float CurrentTime()
+    {
+        return currentTime;
+    }
+
+    /*
     private IEnumerator TPPlayer()
     {
         yield return new WaitForSeconds(5f);
@@ -76,6 +82,7 @@ public class Timer : MonoBehaviour
         FadeController.Instance.FadeOut();
         BeginMiniGame.Instance.started = false;
     }
+    */
 
     private void StartFillAmount()
     {
