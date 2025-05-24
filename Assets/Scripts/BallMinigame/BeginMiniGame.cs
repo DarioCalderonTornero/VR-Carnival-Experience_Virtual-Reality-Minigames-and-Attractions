@@ -24,7 +24,7 @@ public class BeginMiniGame : MonoBehaviour
         {
             started = true;
             playerInZone = true;
-            BallManager.Instance.StartGame();
+            //BallManager.Instance.StartGame();
             time = maxTime;
         }
 
