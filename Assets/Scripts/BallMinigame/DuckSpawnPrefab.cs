@@ -16,7 +16,15 @@ public class DuckSpawnPrefab : MonoBehaviour
     {
         foreach (Transform t in duckSpawnPoint)
         {
-            GameObject duckPrefab = Instantiate(duckGameObject, t.position, t.rotation);
+            GameObject duckGO = Instantiate(duckGameObject, t.position, t.rotation);
+
+            Duck duck = duckGO.GetComponent<Duck>(); 
+
+            if (duck != null)
+            {
+                BaseballDuckManager.Instance.RegisterDuck(duck); 
+            }
         }
     }
+
 }

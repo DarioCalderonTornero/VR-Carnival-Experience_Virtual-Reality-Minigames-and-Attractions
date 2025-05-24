@@ -31,6 +31,13 @@ public class Timer : MonoBehaviour
     {
         canvasGroup.alpha = 0f;
         BallManager.Instance.OnGameStarted += BallManager_OnGameStarted;
+        BallManager.Instance.OnGameEnded += BallManager_OnGameEnded;
+    }
+
+    private void BallManager_OnGameEnded(object sender, EventArgs e)
+    {
+        StopTimer();
+        ResetTimer();
     }
 
     private void BallManager_OnGameStarted(object sender, EventArgs e)

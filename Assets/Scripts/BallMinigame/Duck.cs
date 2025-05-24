@@ -8,6 +8,7 @@ public class Duck : MonoBehaviour
 
     [SerializeField] private GameObject hitParticlePrefab; // Nuevo: el prefab, no el ParticleSystem
     public static event EventHandler OnAnyDuckDetected;
+    public static event EventHandler OnAnyDuckDestroyed;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class Duck : MonoBehaviour
     private IEnumerator DestroyDuck()
     {
         yield return new WaitForSeconds(0.5f);
+        OnAnyDuckDestroyed?.Invoke(this, EventArgs.Empty);
         Destroy(this.gameObject);
     }
 }

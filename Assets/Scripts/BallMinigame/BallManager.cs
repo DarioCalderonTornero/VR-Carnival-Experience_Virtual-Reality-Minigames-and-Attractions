@@ -7,9 +7,9 @@ public class BallManager : MonoBehaviour, IMinigame
     public static BallManager Instance { get; private set; }
 
     public event EventHandler OnGameStarted;
+    public event EventHandler OnGameEnded;
 
     [SerializeField] private BallPrefab spawner;
-    [SerializeField] private ContinuousMoveProvider moveProvider;
     [SerializeField] private Transform triggerZoneTransform;
     [SerializeField] private Transform playerTransform; 
 
@@ -33,22 +33,11 @@ public class BallManager : MonoBehaviour, IMinigame
 
     public void StartGame()
     {
-        StartCoroutine(CountDown.Instance.Countdown(() =>
-        {
-            BeginLogic();
-        }));
-
-    }
-
-    private void BeginLogic()
-    {
+        // ACTIVA primero la lógica del juego aunque la parte visual comience después
         gameActive = true;
         triggerZoneTransform.gameObject.SetActive(true);
-        spawner.SpawnBall();
-        DuckSpawnPrefab.Instance.SpawnDuck();
-        OnGameStarted?.Invoke(this, EventArgs.Empty);
-        Debug.Log("Minijuego de pelotas iniciado");
 
+        // Esto permite que si el jugador se sale durante la cuenta atrás, se detecte correctamente
         Collider triggerCollider = triggerZoneTransform.GetComponent<Collider>();
         if (triggerCollider != null && triggerCollider.bounds.Contains(playerTransform.position))
         {
@@ -58,10 +47,26 @@ public class BallManager : MonoBehaviour, IMinigame
                 beginScript.ForcePlayerInside();
             }
         }
+
+        // Luego lanzas la cuenta atrás visual
+        StartCoroutine(CountDown.Instance.Countdown(() =>
+        {
+            BeginLogic();
+        }));
     }
+
+    private void BeginLogic()
+    {
+        spawner.SpawnBall();
+        DuckSpawnPrefab.Instance.SpawnDuck();
+        OnGameStarted?.Invoke(this, EventArgs.Empty);
+        Debug.Log("Minijuego de pelotas iniciado");
+    }
+
 
     public void EndGame()
     {
+        OnGameEnded?.Invoke(this, EventArgs.Empty);
         gameActive = false;
         triggerZoneTransform.gameObject.SetActive(false);
 
