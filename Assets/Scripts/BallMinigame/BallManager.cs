@@ -23,8 +23,7 @@ public class BallManager : MonoBehaviour, IMinigame
     private void Start()
     {
         Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
-        DuckSpawnPrefab.Instance.SpawnDuck();
-        triggerZoneTransform.gameObject.SetActive(false);
+        //triggerZoneTransform.gameObject.SetActive(false);
     }
 
     private void Timer_OnImageFillAmount(object sender, EventArgs e)
@@ -34,9 +33,19 @@ public class BallManager : MonoBehaviour, IMinigame
 
     public void StartGame()
     {
+        StartCoroutine(CountDown.Instance.Countdown(() =>
+        {
+            BeginLogic();
+        }));
+
+    }
+
+    private void BeginLogic()
+    {
         gameActive = true;
         triggerZoneTransform.gameObject.SetActive(true);
         spawner.SpawnBall();
+        DuckSpawnPrefab.Instance.SpawnDuck();
         OnGameStarted?.Invoke(this, EventArgs.Empty);
         Debug.Log("Minijuego de pelotas iniciado");
 
@@ -46,7 +55,7 @@ public class BallManager : MonoBehaviour, IMinigame
             BeginMiniGame beginScript = triggerZoneTransform.GetComponent<BeginMiniGame>();
             if (beginScript != null)
             {
-                beginScript.ForcePlayerInside(); 
+                beginScript.ForcePlayerInside();
             }
         }
     }
