@@ -67,6 +67,7 @@ public class BallManager : MonoBehaviour, IMinigame
     public void EndGame()
     {
         OnGameEnded?.Invoke(this, EventArgs.Empty);
+        BeginMiniGame.Instance.started = false;
         gameActive = false;
         triggerZoneTransform.gameObject.SetActive(false);
 
