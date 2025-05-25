@@ -26,7 +26,17 @@ public class BaseballDuckManager : MonoBehaviour
 
     public void RegisterDuck(Duck duck)
     {
-        activeDuck.Add(duck);
+        if (!activeDuck.Contains(duck))
+        {
+            activeDuck.Add(duck);
+            Debug.Log("Duck registrado. Total: " + activeDuck.Count);
+        }
+    }
+
+    public void ResetDuckList()
+    {
+        activeDuck.Clear();
+        Debug.Log("Lista de patos reseteada");
     }
 
     private void Duck_OnAnyDuckDestroyed(object sender, System.EventArgs e)
@@ -36,15 +46,15 @@ public class BaseballDuckManager : MonoBehaviour
         if (duck != null)
         {
             activeDuck.Remove(duck);
+            Debug.Log("Pato eliminado. Quedan: " + activeDuck.Count);
 
             if (activeDuck.Count == 0)
             {
                 foreach (var particleSystem in ps)
                 {
                     particleSystem.Play();
-                    BallManager.Instance.EndGame();
                 }
-                Debug.Log("All ducks eliminated");
+                BallManager.Instance.EndGame();
             }
         }
     }

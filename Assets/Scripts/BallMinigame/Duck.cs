@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Duck : MonoBehaviour
 {
-    public static Duck Instance { get; private set; }
-
-    [SerializeField] private GameObject hitParticlePrefab; // Nuevo: el prefab, no el ParticleSystem
+    [SerializeField] private GameObject hitParticlePrefab;
     public static event EventHandler OnAnyDuckDetected;
     public static event EventHandler OnAnyDuckDestroyed;
 
     private void Awake()
     {
-        Instance = this;
+        
+        BaseballDuckManager.Instance.RegisterDuck(this);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,14 +20,12 @@ public class Duck : MonoBehaviour
         {
             Debug.Log("DuckDetected");
 
-            // Instanciar la partícula donde está el pato
             if (hitParticlePrefab != null)
             {
                 GameObject particle = Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                 ps.Play();
-
-                Destroy(particle, ps.main.duration + ps.main.startLifetime.constant); // Se autodestruye
+                Destroy(particle, ps.main.duration + ps.main.startLifetime.constant);
             }
 
             OnAnyDuckDetected?.Invoke(this, EventArgs.Empty);
