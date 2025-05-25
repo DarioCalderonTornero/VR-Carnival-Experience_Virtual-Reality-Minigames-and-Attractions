@@ -19,6 +19,7 @@ public class RollerCoasterManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Delay());
+        //rollercoasterSpline.Speed = 0f;
     }
 
     private void Update()

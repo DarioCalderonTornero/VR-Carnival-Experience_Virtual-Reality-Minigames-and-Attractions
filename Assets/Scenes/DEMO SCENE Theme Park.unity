@@ -6517,6 +6517,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181610852}
   m_CullTransparentMesh: 1
+--- !u!1 &181689055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181689056}
+  - component: {fileID: 181689057}
+  m_Layer: 0
+  m_Name: RollerCoasterDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181689056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181689055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1252870613}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &181689057
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181689055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &182984335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54395,6 +54444,7 @@ Transform:
   - {fileID: 239086569}
   - {fileID: 25073165}
   - {fileID: 1806623800}
+  - {fileID: 181689056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252988347 stripped
@@ -84426,12 +84476,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6185497705203524635, guid: f268808e35c955c44b5ff976754de9cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 837298771}
+    - targetCorrespondingSourceObject: {fileID: 6185497705203524635, guid: f268808e35c955c44b5ff976754de9cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1833599431}
   m_SourcePrefab: {fileID: 100100000, guid: f268808e35c955c44b5ff976754de9cc, type: 3}
 --- !u!4 &1833599427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6817497420920143521, guid: f268808e35c955c44b5ff976754de9cc, type: 3}
   m_PrefabInstance: {fileID: 1833599426}
   m_PrefabAsset: {fileID: 0}
+--- !u!320 &1833599431
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837298770}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 637428c6dda19b5479f6fbf7cc76bdf3, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References:
+    - cdc4917bba39c3246922af456ede505f: {fileID: 837298770}
 --- !u!1 &1833608190
 GameObject:
   m_ObjectHideFlags: 0
