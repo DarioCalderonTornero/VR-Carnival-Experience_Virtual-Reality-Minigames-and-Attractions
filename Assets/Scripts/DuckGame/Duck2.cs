@@ -12,6 +12,8 @@ public class Duck2 : MonoBehaviour
     public float ValorY;
     public float ValorZ;
 
+    [SerializeField] private ParticleSystem confetti;
+
     void Start()
     {
         velocidad = Random.Range(0.8f, 1f);
@@ -40,5 +42,7 @@ public class Duck2 : MonoBehaviour
         rb.useGravity = true;
         rb.AddForce(Vector3.back * 10f, ForceMode.Impulse);
         // transform.Rotate(Vector3.forward * 90f);
+        
+        Instantiate(confetti, this.transform);
     }
 }

@@ -108,6 +108,7 @@ MonoBehaviour:
   ValorX: -60
   ValorY: -8.16
   ValorZ: -30.3
+  confetti: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!65 &8890849479861029235
 BoxCollider:
   m_ObjectHideFlags: 0

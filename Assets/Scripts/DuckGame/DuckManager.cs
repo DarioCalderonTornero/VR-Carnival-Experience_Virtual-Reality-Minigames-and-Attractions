@@ -31,6 +31,8 @@ public class DuckManager : MonoBehaviour
     [SerializeField] private GameObject esferaIzq;
     [SerializeField] private GameObject esferaDer;
 
+    [SerializeField] private ParticleSystem disparoParticulas;
+
     public void EmpezarMinijuego()
     {
         if (enJuego) return;
@@ -73,6 +75,8 @@ public class DuckManager : MonoBehaviour
 
         puedeDisparar = false;
         StartCoroutine(ReactivarDisparo());
+
+        Instantiate(disparoParticulas, puntoDisparo.transform);
     }
 
     IEnumerator ReactivarDisparo()

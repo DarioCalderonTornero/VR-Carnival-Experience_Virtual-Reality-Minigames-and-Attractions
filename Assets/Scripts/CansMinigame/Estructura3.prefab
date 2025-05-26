@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  polvoGolpe: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!54 &1985390473717280390
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  polvoGolpe: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!54 &6462396695824568789
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -455,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  polvoGolpe: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!54 &3360846068221411143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -617,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  polvoGolpe: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!54 &5388004685942480014
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -774,6 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  polvoGolpe: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!54 &8268757404235910277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -926,6 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  polvoGolpe: {fileID: 4938095755617958530, guid: 42b133c0c9da2814ba2d0f3c09d9c696, type: 3}
 --- !u!54 &2949670069419196221
 Rigidbody:
   m_ObjectHideFlags: 0
