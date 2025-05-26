@@ -17,6 +17,8 @@ TagManager:
   - Topo
   - Hammer
   - Controller
+  - FxTemporaire
+  - Gol
   layers:
   - Default
   - TransparentFX
