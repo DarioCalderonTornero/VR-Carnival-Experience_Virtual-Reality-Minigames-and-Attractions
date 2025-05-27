@@ -1011,6 +1011,7 @@ MonoBehaviour:
   baseColor: {r: 0.7058824, g: 0.7058824, b: 1, a: 0}
   flashColor: {r: 0, g: 0.008504391, b: 1, a: 1}
   buttonID: 1
+  soundClip: {fileID: 8300000, guid: ea4e4402b3e8ac2459563c0bd985d128, type: 3}
   interactableEnabled: 1
 --- !u!114 &1034337872
 MonoBehaviour:
@@ -1223,6 +1224,7 @@ MonoBehaviour:
   baseColor: {r: 1, g: 0.8313726, b: 0.7058824, a: 0}
   flashColor: {r: 1, g: 0.8296584, b: 0, a: 1}
   buttonID: 3
+  soundClip: {fileID: 8300000, guid: 270bed9445eb7534b9fbf39eea4d2c99, type: 3}
   interactableEnabled: 1
 --- !u!114 &1068467051
 MonoBehaviour:
@@ -1607,6 +1609,7 @@ MonoBehaviour:
   baseColor: {r: 0.7058824, g: 1, b: 0.7058824, a: 0}
   flashColor: {r: 0.088113785, g: 1, b: 0, a: 1}
   buttonID: 2
+  soundClip: {fileID: 8300000, guid: c229dc8a4ca4b9a44842dbe2795ca399, type: 3}
   interactableEnabled: 1
 --- !u!114 &1136834615
 MonoBehaviour:
@@ -2603,6 +2606,7 @@ MonoBehaviour:
   baseColor: {r: 1, g: 0.7058824, b: 0.7058824, a: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   buttonID: 0
+  soundClip: {fileID: 8300000, guid: 60d412acdddcfca4586deb815204ca12, type: 3}
   interactableEnabled: 1
 --- !u!114 &1802895734
 MonoBehaviour:

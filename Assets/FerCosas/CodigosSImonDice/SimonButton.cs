@@ -12,18 +12,28 @@ public class SimonButton : MonoBehaviour
     [Header("Identificador")]
     public int buttonID;
 
+    [Header("Audio")]
+    public AudioClip soundClip; // sonido propio del botón
+
     [HideInInspector]
     public bool interactableEnabled = true;
 
     private SimonSaysGame gameManager;
-    private SimonSoundManager soundManager;
+    private AudioSource audioSource;
 
     void Start()
     {
         gameManager = FindFirstObjectByType<SimonSaysGame>();
-        soundManager = FindFirstObjectByType<SimonSoundManager>();
 
         SetColor(baseColor);
+
+        // Configurar el AudioSource local en 3D
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = soundClip;
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 1f;   // 3D
+        audioSource.minDistance = 0.5f;
+        audioSource.maxDistance = 10f;
 
         var interactable = GetComponent<XRSimpleInteractable>();
         if (interactable != null)
@@ -37,7 +47,7 @@ public class SimonButton : MonoBehaviour
         if (!interactableEnabled)
             return;
 
-        soundManager?.PlayClickSound();
+        PlayClickSound();
         gameManager?.ReceivePlayerInput(buttonID);
     }
 
@@ -49,7 +59,7 @@ public class SimonButton : MonoBehaviour
     private System.Collections.IEnumerator FlashCoroutine()
     {
         SetColor(flashColor);
-        soundManager?.PlayColorSound(buttonID);
+        PlayColorSound();
         yield return new WaitForSeconds(0.5f);
         SetColor(baseColor);
     }
@@ -65,5 +75,17 @@ public class SimonButton : MonoBehaviour
     public void SetInteractable(bool value)
     {
         interactableEnabled = value;
+    }
+
+    private void PlayClickSound()
+    {
+        if (audioSource != null && soundClip != null)
+            audioSource.PlayOneShot(soundClip);
+    }
+
+    private void PlayColorSound()
+    {
+        if (audioSource != null && soundClip != null)
+            audioSource.PlayOneShot(soundClip);
     }
 }
