@@ -35,7 +35,7 @@ public class BalloonFloat : MonoBehaviour
             {
                 Instantiate(explosionFX, transform.position, Quaternion.identity);
             }
-            Debug.Log("Explota");
+
             Destroy(gameObject);
         }
     }

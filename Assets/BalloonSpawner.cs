@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BalloonSpawner : MonoBehaviour
 {
@@ -24,10 +25,15 @@ public class BalloonSpawner : MonoBehaviour
     void Start()
     {
         currentInterval = startInterval;
+        //StartCoroutine(SpawnBalloonsLoop());
+    }
+
+    public void BeginBalloonLoop()
+    {
         StartCoroutine(SpawnBalloonsLoop());
     }
 
-    System.Collections.IEnumerator SpawnBalloonsLoop()
+    public IEnumerator SpawnBalloonsLoop()
     {
         while (true)
         {
