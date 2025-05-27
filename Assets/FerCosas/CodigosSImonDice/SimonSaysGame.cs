@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +23,13 @@ public class SimonSaysGame : MonoBehaviour
     private bool gameRunning = false;
     private bool hasEnteredProximity = false;
 
+    // Estados
+    private enum GameState { Idle, StartDelay, PlayingSequence, WaitBetweenFlashes, WaitAfterFailure, PlayerTurn, NextRoundDelay }
+    private GameState currentState = GameState.Idle;
+
+    private float stateTimer = 0f;
+    private int flashIndex = 0;
+
     void Start()
     {
         soundManager = FindFirstObjectByType<SimonSoundManager>();
@@ -36,21 +42,32 @@ public class SimonSaysGame : MonoBehaviour
         if (!hasEnteredProximity && distance <= activationDistance)
         {
             hasEnteredProximity = true;
-            StartCoroutine(StartGame());
+            StartGame();
         }
-        else if (hasEnteredProximity && distance > activationDistance + 0.5f) // un poco más de margen
+        else if (hasEnteredProximity && distance > activationDistance + 0.5f)
         {
             ResetGame();
         }
+
+        HandleGameState();
+    }
+
+    public void StartGame()
+    {
+        gameRunning = true;
+        sequence.Clear();
+        AddRandomStep();
+        currentState = GameState.StartDelay;
+        stateTimer = 1f;
     }
 
     void ResetGame()
     {
-        StopAllCoroutines();
         hasEnteredProximity = false;
         gameRunning = false;
         isPlayerTurn = false;
         sequence.Clear();
+        currentState = GameState.Idle;
 
         foreach (var button in buttons)
         {
@@ -61,86 +78,129 @@ public class SimonSaysGame : MonoBehaviour
         Debug.Log("Jugador se alejó. El minijuego se ha reiniciado.");
     }
 
-    IEnumerator StartGame()
-    {
-        gameRunning = true;
-        sequence.Clear();
-        yield return new WaitForSeconds(1f);
-        AddRandomStep();
-        yield return PlaySequence();
-        isPlayerTurn = true;
-    }
-
     void AddRandomStep()
     {
         int newStep = Random.Range(0, buttons.Length);
         sequence.Add(newStep);
     }
 
-    IEnumerator PlaySequence()
+    void HandleGameState()
     {
-        isPlayerTurn = false;
-        currentStep = 0;
+        if (!gameRunning) return;
 
-        foreach (var button in buttons)
-            button.SetInteractable(false);
-
-        foreach (int id in sequence)
+        switch (currentState)
         {
-            buttons[id].Flash();
-            yield return new WaitForSeconds(flashDelay);
-        }
+            case GameState.StartDelay:
+                stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0f)
+                {
+                    flashIndex = 0;
+                    DisableAllButtons();
+                    currentState = GameState.PlayingSequence;
+                }
+                break;
 
-        foreach (var button in buttons)
-            button.SetInteractable(true);
+            case GameState.PlayingSequence:
+                if (flashIndex < sequence.Count)
+                {
+                    buttons[sequence[flashIndex]].Flash();
+                    stateTimer = flashDelay;
+                    currentState = GameState.WaitBetweenFlashes;
+                }
+                else
+                {
+                    EnableAllButtons();
+                    currentStep = 0;
+                    isPlayerTurn = true;
+                    currentState = GameState.PlayerTurn;
+                }
+                break;
+
+            case GameState.WaitBetweenFlashes:
+                stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0f)
+                {
+                    flashIndex++;
+                    currentState = GameState.PlayingSequence;
+                }
+                break;
+
+            case GameState.WaitAfterFailure:
+                stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0f)
+                {
+                    foreach (var button in buttons)
+                        button.SetColor(button.baseColor);
+
+                    StartGame();
+                }
+                break;
+
+            case GameState.NextRoundDelay:
+                stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0f)
+                {
+                    AddRandomStep();
+                    flashIndex = 0;
+                    DisableAllButtons();
+                    currentState = GameState.PlayingSequence;
+                }
+                break;
+
+            case GameState.PlayerTurn:
+                // input control goes elsewhere
+                break;
+        }
     }
 
     public void ReceivePlayerInput(int buttonID)
     {
-        if (!isPlayerTurn)
-            return;
+        if (!isPlayerTurn) return;
 
         if (buttonID == sequence[currentStep])
         {
             currentStep++;
             if (currentStep >= sequence.Count)
             {
-                StartCoroutine(NextRound());
+                isPlayerTurn = false;
+                DisableAllButtons();
+                stateTimer = 1f;
+                currentState = GameState.NextRoundDelay;
             }
         }
         else
         {
-            StartCoroutine(HandleFailure());
+            FailSequence();
         }
     }
 
-    IEnumerator HandleFailure()
+    void FailSequence()
     {
         isPlayerTurn = false;
+        DisableAllButtons();
 
         soundManager?.PlayFailSound();
 
         foreach (var button in buttons)
         {
-            button.SetInteractable(false);
             button.SetColor(Color.red);
         }
 
+        stateTimer = failDisplayTime;
+        currentState = GameState.WaitAfterFailure;
+
         Debug.Log("¡Has fallado! Reinicio en " + failDisplayTime + " segundos...");
-        yield return new WaitForSeconds(failDisplayTime);
-
-        foreach (var button in buttons)
-            button.SetColor(button.baseColor);
-
-        StartCoroutine(StartGame());
     }
 
-    IEnumerator NextRound()
+    void DisableAllButtons()
     {
-        isPlayerTurn = false;
-        yield return new WaitForSeconds(1f);
-        AddRandomStep();
-        yield return PlaySequence();
-        isPlayerTurn = true;
+        foreach (var button in buttons)
+            button.SetInteractable(false);
+    }
+
+    void EnableAllButtons()
+    {
+        foreach (var button in buttons)
+            button.SetInteractable(true);
     }
 }
