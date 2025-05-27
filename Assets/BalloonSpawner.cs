@@ -10,7 +10,7 @@ public class BalloonSpawner : MonoBehaviour
     public Transform[] spawnPoints;
 
     [Header("Tiempos de aparición")]
-    public float startInterval = 1.5f;    // Tiempo inicial entre tandas
+    public float startInterval = 1.5f;   
     public float minInterval = 0.1f;
     public float acceleration = 0.01f;
 
@@ -22,8 +22,11 @@ public class BalloonSpawner : MonoBehaviour
     private int balloonsSpawned = 0;
     private int balloonsPerBatch = 1;
 
+    public Transform hand;
+
     void Start()
     {
+        hand.gameObject.SetActive(false);
         currentInterval = startInterval;
         //StartCoroutine(SpawnBalloonsLoop());
     }
@@ -37,6 +40,8 @@ public class BalloonSpawner : MonoBehaviour
     {
         while (true)
         {
+            hand.gameObject.SetActive(true);
+
             yield return new WaitForSeconds(currentInterval);
 
             if (spawnPoints.Length == 0 || balloonPrefab == null)
