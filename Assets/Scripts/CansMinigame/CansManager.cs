@@ -70,8 +70,6 @@ public class CansManager : MonoBehaviour
     {
         if (enJuego) return;
 
-        moveProvider.enabled = false;
-
         rondasActuales = 0;
 
         // tiempoRestante = tiempoLimite;
@@ -186,8 +184,6 @@ public class CansManager : MonoBehaviour
     {
         if (jugador != null && zonaSalidaJugador != null)
             jugador.position = zonaSalidaJugador.position;
-
-        moveProvider.enabled = true;
 
         foreach (var pelota in pelotasInstanciadas)
         {

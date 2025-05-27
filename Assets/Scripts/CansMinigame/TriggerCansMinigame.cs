@@ -34,7 +34,7 @@ public class TriggerCansMinigame : MonoBehaviour
         {
             started = true;
             playerInZone = true;
-            CansManager.Instance.EmpezarMinijuego();
+            // CansManager.Instance.EmpezarMinijuego();
             time = maxTime;
         }
 

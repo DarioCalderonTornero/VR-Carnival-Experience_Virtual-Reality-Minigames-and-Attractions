@@ -51,8 +51,6 @@ public class DuckManager : MonoBehaviour
         obstaculo.IniciarMovimiento();
         StartCoroutine(MinijuegoPorTiempo());
 
-        moveProvider.enabled = false;
-
         esferaDer.gameObject.SetActive(true);
         esferaIzq.gameObject.SetActive(true);
     }
@@ -126,8 +124,6 @@ public class DuckManager : MonoBehaviour
     {
         if (jugador != null && zonaSalidaJugador != null)
             jugador.position = zonaSalidaJugador.position;
-
-        moveProvider.enabled = true;
 
     }
 }

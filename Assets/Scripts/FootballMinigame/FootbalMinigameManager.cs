@@ -28,17 +28,19 @@ public class FootbalMinigameManager : MonoBehaviour
         puntos = 0;
         minijuegoActivo = true;
 
-        InstanciarPelota();
+        StartCoroutine(InstanciarPelota());
 
         portero.IniciarMovimiento();
 
         StartCoroutine(MinijuegoTemporizador());
     }
 
-    private void InstanciarPelota()
+    IEnumerator InstanciarPelota()
     {
         if (pelotaActual != null)
             Destroy(pelotaActual, 2f);
+
+        yield return new WaitForSeconds(2f);
 
         pelotaActual = Instantiate(pelotaPrefab, posicionInstanciaPelota.position, Quaternion.identity);
         pelotaActual.GetComponent<GoslBall>().AsignarManager(this);
@@ -48,7 +50,7 @@ public class FootbalMinigameManager : MonoBehaviour
     {
         if (!minijuegoActivo) return;
 
-        InstanciarPelota();
+        StartCoroutine(InstanciarPelota());
     }
 
     public void GolMarcado()
@@ -56,7 +58,7 @@ public class FootbalMinigameManager : MonoBehaviour
         if (!minijuegoActivo) return;
 
         puntos++;
-        InstanciarPelota();
+        StartCoroutine(InstanciarPelota());
     }
 
     private IEnumerator MinijuegoTemporizador()
