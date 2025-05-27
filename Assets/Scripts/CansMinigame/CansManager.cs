@@ -44,12 +44,16 @@ public class CansManager : MonoBehaviour
 
     public static CansManager Instance { get; private set; }
 
+    [Header("Rondas")]
+    [SerializeField] private int rondasTotales = 5;
+    private int rondasActuales = 0;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (enJuego && temporizadorActivo && !minijuegoTerminado)
         {
@@ -60,7 +64,7 @@ public class CansManager : MonoBehaviour
                 // StartCoroutine(TerminarMinijuego());
             }
         }
-    }
+    }*/
 
     public void EmpezarMinijuego()
     {
@@ -68,8 +72,10 @@ public class CansManager : MonoBehaviour
 
         moveProvider.enabled = false;
 
-        tiempoRestante = tiempoLimite;
-        temporizadorActivo = true;
+        rondasActuales = 0;
+
+        // tiempoRestante = tiempoLimite;
+        // temporizadorActivo = true;
 
         enJuego = true;
         pelotasUsadas = 0;
@@ -130,10 +136,18 @@ public class CansManager : MonoBehaviour
         pelotasUsadas++;
         if (pelotasUsadas >= 3)
         {
-            StartCoroutine(GenerarEstructuraAleatoria());
-            pelotasUsadas = 0; 
+            pelotasUsadas = 0;
+            rondasActuales++;
 
-            StartCoroutine(InstanciarBolas());
+            if (rondasActuales >= rondasTotales)
+            {
+                StartCoroutine(TerminarMinijuego());
+            }
+            else
+            {
+                StartCoroutine(GenerarEstructuraAleatoria());
+                StartCoroutine(InstanciarBolas());
+            }
         }
     }
 
@@ -148,6 +162,7 @@ public class CansManager : MonoBehaviour
         Debug.Log($"Minijuego terminado. Puntos totales: {puntos}");
 
         FadeController.Instance.FadeIn();
+        TriggerCansMinigame.Instance.started = false;
 
         yield return new WaitForSeconds(1f);
 

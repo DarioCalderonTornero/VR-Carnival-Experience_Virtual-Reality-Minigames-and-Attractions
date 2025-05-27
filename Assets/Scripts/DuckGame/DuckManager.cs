@@ -112,6 +112,8 @@ public class DuckManager : MonoBehaviour
         Debug.Log("Minijuego patos terminado. Puntos conseguidos: " + puntos);
         TicketsSystem.Instance.GanaTickets(puntos);
 
+        TriggerInicio.Instance.started = false;
+
         foreach (var pato in patosInstanciados)
         {
             if (pato != null)
