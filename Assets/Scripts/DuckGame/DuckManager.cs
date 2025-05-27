@@ -33,6 +33,14 @@ public class DuckManager : MonoBehaviour
 
     [SerializeField] private ParticleSystem disparoParticulas;
 
+    public static DuckManager Instance { get; private set; }
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void EmpezarMinijuego()
     {
         if (enJuego) return;
@@ -90,7 +98,7 @@ public class DuckManager : MonoBehaviour
         patosDerribados++;
     }
 
-    void FinalizarMinijuego()
+    public void FinalizarMinijuego()
     {
         enJuego = false;
         obstaculo.DetenerMovimiento();

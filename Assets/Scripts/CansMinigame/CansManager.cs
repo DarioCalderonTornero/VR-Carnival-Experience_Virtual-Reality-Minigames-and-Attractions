@@ -42,6 +42,13 @@ public class CansManager : MonoBehaviour
 
     private bool minijuegoTerminado = false;
 
+    public static CansManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Update()
     {
         if (enJuego && temporizadorActivo && !minijuegoTerminado)
@@ -50,7 +57,7 @@ public class CansManager : MonoBehaviour
             if (tiempoRestante <= 0f)
             {
                 minijuegoTerminado = true;
-                StartCoroutine(TerminarMinijuego());
+                // StartCoroutine(TerminarMinijuego());
             }
         }
     }
@@ -135,7 +142,7 @@ public class CansManager : MonoBehaviour
         latasCaidasTotales++; 
     }
 
-    private IEnumerator TerminarMinijuego()
+    public IEnumerator TerminarMinijuego()
     {
         int puntos = latasCaidasTotales;
         Debug.Log($"Minijuego terminado. Puntos totales: {puntos}");

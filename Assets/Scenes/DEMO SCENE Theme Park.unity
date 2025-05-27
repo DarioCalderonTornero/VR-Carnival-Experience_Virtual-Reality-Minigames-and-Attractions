@@ -46372,7 +46372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1071085006e3a8048a1c3b6231b20655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1035877587}
+  started: 0
+  playerInZone: 0
+  warningEffect: {fileID: 1738048065}
 --- !u!65 &1071447580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60246,8 +60248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bddb966e162294c964faca3cad7f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1037497552}
-  tagJugador: Player
+  started: 0
+  playerInZone: 0
+  warningEffect: {fileID: 1738048065}
 --- !u!65 &1365485259
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62706,7 +62709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.89
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62714,7 +62717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.89
+      value: 49.6
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
