@@ -7,6 +7,7 @@ public class TimerTopos : MonoBehaviour
     public static TimerTopos Instance { get; private set; }
 
     public event EventHandler OnTimerFinish;
+    public event EventHandler OnTimerStart; 
 
     [SerializeField] private Image timerFillImage;
     [SerializeField] private float duration = 60;
@@ -41,7 +42,8 @@ public class TimerTopos : MonoBehaviour
 
     private void BeginMinigameTopos_OnBeginMinigameTopos(object sender, EventArgs e)
     {
-        
+        StartFillAmount();
+        ResetTimer();
     }
 
     /*
@@ -57,6 +59,7 @@ public class TimerTopos : MonoBehaviour
     {
         if (!isRunning)
             return;
+        Debug.Log(currentTime);
 
         currentTime -= Time.deltaTime;
         float fill = Mathf.Clamp01(currentTime / duration);
@@ -92,6 +95,7 @@ public class TimerTopos : MonoBehaviour
         Debug.Log("StartTimer");
         isRunning = true;
         canvasGroup.alpha = 1;
+        OnTimerStart?.Invoke(this, EventArgs.Empty);
     }
 
     private void ResetTimer()

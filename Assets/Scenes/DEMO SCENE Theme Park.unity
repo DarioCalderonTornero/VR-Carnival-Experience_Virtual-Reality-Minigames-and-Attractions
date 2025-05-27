@@ -1818,7 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerFillImage: {fileID: 49166846}
-  duration: 30
+  duration: 10
   playerTransform: {fileID: 1426417729}
   salidaTransform: {fileID: 753692140}
   canvasGroup: {fileID: 49166845}

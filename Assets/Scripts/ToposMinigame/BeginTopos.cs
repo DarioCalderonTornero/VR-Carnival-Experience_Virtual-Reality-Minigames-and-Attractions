@@ -69,7 +69,7 @@ public class BeginTopos : MonoBehaviour
     private IEnumerator Show_HideHammer()
     {
         pickUpHammerText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         pickUpHammerText.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
