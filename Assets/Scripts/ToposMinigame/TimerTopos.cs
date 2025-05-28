@@ -75,7 +75,7 @@ public class TimerTopos : MonoBehaviour
             Invoke(nameof(TPPlayer), 1.5f);
             Invoke(nameof(FadeOut), 3f);
             OnTimerFinish?.Invoke(this, EventArgs.Empty);
-            BeginMinigameTopos.Instance.playerMove.enabled = true;
+            //BeginMinigameTopos.Instance.playerMove.enabled = true;
         }
     }
 

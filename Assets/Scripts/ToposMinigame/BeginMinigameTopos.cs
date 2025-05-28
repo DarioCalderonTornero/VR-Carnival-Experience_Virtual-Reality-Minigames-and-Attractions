@@ -10,7 +10,7 @@ public class BeginMinigameTopos : MonoBehaviour
 
     private bool beginMinigame = false;
 
-    public ContinuousMoveProvider playerMove;
+    //public ContinuousMoveProvider playerMove;
 
     private void Awake()
     {
@@ -30,11 +30,11 @@ public class BeginMinigameTopos : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //&& beginMinigame
-        if (other.CompareTag("Player") && beginMinigame)
+        if (other.CompareTag("Player"))
         {
             Debug.Log("StartMinigame");
             OnBeginMinigameTopos?.Invoke(this,EventArgs.Empty);
-            playerMove.enabled = false;
+            //playerMove.enabled = false;
         }
     }
 }
