@@ -19,6 +19,8 @@ TagManager:
   - Controller
   - FxTemporaire
   - Gol
+  - Ground
+  - Net
   layers:
   - Default
   - TransparentFX

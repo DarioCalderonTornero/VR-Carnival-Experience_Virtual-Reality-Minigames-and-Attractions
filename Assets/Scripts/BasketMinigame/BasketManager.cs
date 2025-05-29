@@ -10,7 +10,7 @@ public class BasketManager : MonoBehaviour
 
     private void Start()
     {
-        //StartBasketMinigame();
+        StartBasketMinigame();
     }
 
     public void StartBasketMinigame()

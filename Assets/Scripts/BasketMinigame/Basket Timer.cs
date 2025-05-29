@@ -42,7 +42,7 @@ public class BasketTimer : MonoBehaviour
             }
         }
 
-        string formattedTime = currentTime.ToString("00.00");
+        string formattedTime = currentTime.ToString("00.0");
         formattedTime = formattedTime.Replace(",", ":").Replace(".", ":"); 
         timerText.text = formattedTime;
     }
