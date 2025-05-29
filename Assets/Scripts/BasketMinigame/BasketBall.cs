@@ -11,9 +11,16 @@ public class Basketball : MonoBehaviour
     {
         if (other.CompareTag("Net"))
         {
-            Debug.Log("DestruirBola");
             OnCanasta?.Invoke(this, EventArgs.Empty);
+
+            if (!PeriodManager.Instance.minigameStarted)
+            {
+                PeriodManager.Instance.BeginBasketPeriod();
+            }
+
             ParticleSystem particle = Instantiate (ps, particleSystemTransform.transform.position, Quaternion.identity);   
+
+            Destroy(this.gameObject);
         }
 
         if (other.CompareTag("Ground"))
