@@ -12,12 +12,13 @@ public class FootbalMinigameManager : MonoBehaviour
     public Transform jugador;
     public Transform zonaSalidaJugador;
 
-    [Header("Temporizador")]
-    public float duracionMinijuego = 30f;
+    [Header("Configuración de rondas")]
+    public int totalRondas = 5;
 
     private GameObject pelotaActual;
     private bool minijuegoActivo = false;
     private int puntos = 0;
+    private int rondasActuales = 0;
 
     [SerializeField] private GoalKeeper portero;
 
@@ -26,13 +27,12 @@ public class FootbalMinigameManager : MonoBehaviour
         if (minijuegoActivo) return;
 
         puntos = 0;
+        rondasActuales = 0;
         minijuegoActivo = true;
-
-        StartCoroutine(InstanciarPelota());
 
         portero.IniciarMovimiento();
 
-        StartCoroutine(MinijuegoTemporizador());
+        StartCoroutine(InstanciarPelota());
     }
 
     IEnumerator InstanciarPelota()
@@ -50,7 +50,10 @@ public class FootbalMinigameManager : MonoBehaviour
     {
         if (!minijuegoActivo) return;
 
-        StartCoroutine(InstanciarPelota());
+        rondasActuales++;
+        VerificarFinMinijuego();
+        if (minijuegoActivo)
+            StartCoroutine(InstanciarPelota());
     }
 
     public void GolMarcado()
@@ -58,19 +61,23 @@ public class FootbalMinigameManager : MonoBehaviour
         if (!minijuegoActivo) return;
 
         puntos++;
-        StartCoroutine(InstanciarPelota());
+        rondasActuales++;
+        VerificarFinMinijuego();
+        if (minijuegoActivo)
+            StartCoroutine(InstanciarPelota());
     }
 
-    private IEnumerator MinijuegoTemporizador()
+    private void VerificarFinMinijuego()
     {
-        yield return new WaitForSeconds(duracionMinijuego);
+        if (rondasActuales >= totalRondas)
+        {
+            minijuegoActivo = false;
 
-        minijuegoActivo = false;
+            if (pelotaActual != null)
+                Destroy(pelotaActual, 2f);
 
-        if (pelotaActual != null)
-            Destroy(pelotaActual, 2f);
-
-        TerminarMinijuego();
+            TerminarMinijuego();
+        }
     }
 
     private void TerminarMinijuego()
@@ -83,6 +90,7 @@ public class FootbalMinigameManager : MonoBehaviour
         {
             jugador.position = zonaSalidaJugador.position;
         }
+
         TicketsSystem.Instance.GanaTickets(puntos);
     }
 }

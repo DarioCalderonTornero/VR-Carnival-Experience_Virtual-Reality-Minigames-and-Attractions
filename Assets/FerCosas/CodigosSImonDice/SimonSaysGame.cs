@@ -42,7 +42,7 @@ public class SimonSaysGame : MonoBehaviour
         if (!hasEnteredProximity && distance <= activationDistance)
         {
             hasEnteredProximity = true;
-            StartGame();
+            // StartGame();
         }
         else if (hasEnteredProximity && distance > activationDistance + 0.5f)
         {
@@ -132,7 +132,7 @@ public class SimonSaysGame : MonoBehaviour
                     foreach (var button in buttons)
                         button.SetColor(button.baseColor);
 
-                    StartGame();
+                    // StartGame();
                 }
                 break;
 
