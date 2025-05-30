@@ -9,6 +9,17 @@ public class BasketScore : MonoBehaviour
     void Start()
     {
         Basketball.OnCanasta += Basketball_OnCanasta;
+        PeriodManager.Instance.OnGameFinish += PeriodManager_OnGameFinish;
+    }
+
+    private void PeriodManager_OnGameFinish(object sender, System.EventArgs e)
+    {
+        Invoke(nameof(ResetPuntosCount), 3f);
+    }
+
+    private void ResetPuntosCount()
+    {
+        puntosCount = 0;
     }
 
     private void Update()

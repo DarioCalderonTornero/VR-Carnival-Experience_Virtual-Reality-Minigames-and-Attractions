@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class PeriodManager : MonoBehaviour
 {
     public static PeriodManager Instance { get; private set; }
+
+    public event EventHandler OnGameFinish;
 
     [SerializeField] private int maxRondas = 5;
     [SerializeField] private int lanzamientosPorRonda = 5;
@@ -19,7 +22,14 @@ public class PeriodManager : MonoBehaviour
 
     private void Start()
     {
-        Basketball.OnCanasta += Basketball_OnCanasta;
+        Basketball.OnBallDestroy += Basketball_OnCanasta;
+        BasketTimer.OnBasketTimerFinish += BasketTimer_OnBasketTimerFinish;
+    }
+
+    private void BasketTimer_OnBasketTimerFinish(object sender, System.EventArgs e)
+    {
+        Debug.Log("Time Finish");
+        EndGame();
     }
 
     public bool isMinigameStarted()
@@ -31,8 +41,8 @@ public class PeriodManager : MonoBehaviour
     {
         minigameStarted = true;
         currentRound = 0;
-        lanzamientosRestantes = lanzamientosPorRonda -1;
-        SpawnBasketBall.Instance.SpawnBasketBalls(spawnPoints[currentRound]);
+        lanzamientosRestantes = lanzamientosPorRonda;
+        //SpawnBasketBall.Instance.SpawnBasketBalls(spawnPoints[currentRound]);
     }
 
     private void Basketball_OnCanasta(object sender, System.EventArgs e)
@@ -51,7 +61,7 @@ public class PeriodManager : MonoBehaviour
 
             if (currentRound >= maxRondas)
             {
-                Debug.Log("Fin del juego");
+                EndGame();
                 minigameStarted = false;
             }
             else
@@ -61,6 +71,33 @@ public class PeriodManager : MonoBehaviour
                 SpawnBasketBall.Instance.SpawnBasketBalls(spawnPoints[currentRound]);
             }
         }
+    }
+
+    public void EndGame()
+    {
+        //Reinicio nivel
+        Debug.Log("Game Ended");
+        OnGameFinish?.Invoke(this, EventArgs.Empty);
+        Invoke(nameof(ResetCurrentRound),3f);
+        lanzamientosRestantes = lanzamientosPorRonda;
+
+        foreach(GameObject ball in GameObject.FindGameObjectsWithTag("BasketBall"))
+        {
+            Destroy(ball);
+        }
+        Invoke(nameof(SpawnFistBasketBall), 4f);
+
+        BasketManager.Instance.ResetMinigame();
+    }
+
+    private void ResetCurrentRound()
+    {
+        currentRound = 0;
+    }
+
+    private void SpawnFistBasketBall()
+    {
+        SpawnBasketBall.Instance.SpawnBasketBalls(spawnPoints[currentRound]);
     }
 
     public int GetCurrentRound()

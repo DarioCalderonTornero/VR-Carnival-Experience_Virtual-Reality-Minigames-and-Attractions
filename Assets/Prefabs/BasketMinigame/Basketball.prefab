@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basketball
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
+      propertyPath: m_TagString
+      value: BasketBall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -84,6 +88,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7794640600642539443}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1272702650191764277}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
 --- !u!4 &1234268007485291243 stripped
 Transform:
@@ -153,7 +160,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -279,3 +286,15 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
+--- !u!114 &-1272702650191764277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903563152452902993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d01fdaf13c2c8944ae160713d3adba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

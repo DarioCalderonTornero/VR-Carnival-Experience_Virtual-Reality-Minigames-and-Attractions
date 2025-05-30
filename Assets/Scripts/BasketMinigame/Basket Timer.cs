@@ -15,7 +15,14 @@ public class BasketTimer : MonoBehaviour
     private void Start()
     {
         BasketManager.OnBasketMinigameStart += BasketManager_OnBasketMinigameStart;
+        PeriodManager.Instance.OnGameFinish += PeriodManager_OnGameFinish;
         //currentTime = timerDuration;
+    }
+
+    private void PeriodManager_OnGameFinish(object sender, EventArgs e)
+    {
+        timerRunning = false;
+        currentTime = 0f;
     }
 
     private void BasketManager_OnBasketMinigameStart(object sender, System.EventArgs e)
@@ -27,6 +34,10 @@ public class BasketTimer : MonoBehaviour
 
     private void Update()
     {
+        string formattedTime = currentTime.ToString("00.0");
+        formattedTime = formattedTime.Replace(",", ":").Replace(".", ":");
+        timerText.text = formattedTime;
+
         if (!timerRunning)
             return;
 
@@ -37,14 +48,11 @@ public class BasketTimer : MonoBehaviour
 
             if (currentTime <= 0f)
             {
-                Debug.Log("Basket Timer Finish");
+                timerRunning = false;
+                currentTime = 0f;
                 OnBasketTimerFinish?.Invoke(this, EventArgs.Empty);
             }
         }
-
-        string formattedTime = currentTime.ToString("00.0");
-        formattedTime = formattedTime.Replace(",", ":").Replace(".", ":"); 
-        timerText.text = formattedTime;
     }
 
     public float GetCurrentTime()

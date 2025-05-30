@@ -21,6 +21,7 @@ TagManager:
   - Gol
   - Ground
   - Net
+  - BasketBall
   layers:
   - Default
   - TransparentFX
