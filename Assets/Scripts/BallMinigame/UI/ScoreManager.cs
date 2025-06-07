@@ -4,9 +4,16 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance { get; private set; }
+
     [SerializeField] private TextMeshProUGUI scoreText;      
 
     private int score = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -20,6 +27,11 @@ public class ScoreManager : MonoBehaviour
     {
         Debug.Log(score);
         score++;
+    }
+
+    public int GetBaseBallScore()
+    {
+        return score;
     }
 
     private void OnGameEnd(object sender, System.EventArgs e)
