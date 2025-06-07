@@ -78,14 +78,14 @@ public class PeriodManager : MonoBehaviour
         //Reinicio nivel
         Debug.Log("Game Ended");
         OnGameFinish?.Invoke(this, EventArgs.Empty);
-        Invoke(nameof(ResetCurrentRound),3f);
+        Invoke(nameof(ResetCurrentRound),7f);
         lanzamientosRestantes = lanzamientosPorRonda;
 
         foreach(GameObject ball in GameObject.FindGameObjectsWithTag("BasketBall"))
         {
             Destroy(ball);
         }
-        Invoke(nameof(SpawnFistBasketBall), 4f);
+        Invoke(nameof(SpawnFistBasketBall), 7f);
 
         BasketManager.Instance.ResetMinigame();
     }

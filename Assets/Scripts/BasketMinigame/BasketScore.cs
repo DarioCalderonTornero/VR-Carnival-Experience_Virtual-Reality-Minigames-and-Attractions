@@ -3,8 +3,15 @@ using UnityEngine;
 
 public class BasketScore : MonoBehaviour
 {
+    public static BasketScore Instance { get; private set; }
+
     [SerializeField] private TextMeshProUGUI basketScoreText;
     private int puntosCount = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -14,7 +21,8 @@ public class BasketScore : MonoBehaviour
 
     private void PeriodManager_OnGameFinish(object sender, System.EventArgs e)
     {
-        Invoke(nameof(ResetPuntosCount), 3f);
+        UpdateBestScore();
+        Invoke(nameof(ResetPuntosCount), 7f);
     }
 
     private void ResetPuntosCount()
@@ -30,5 +38,24 @@ public class BasketScore : MonoBehaviour
     private void Basketball_OnCanasta(object sender, System.EventArgs e)
     {
         puntosCount++;
+    }
+
+    public int GetPuntosCount()
+    {
+        return puntosCount;
+    }
+
+    public int GetBestScore()
+    {
+        return PlayerPrefs.GetInt("BestBasketScore", 0);
+    }
+
+    public void UpdateBestScore()
+    {
+        if (puntosCount > GetBestScore())
+        {
+            PlayerPrefs.SetInt("BestBasketScore", puntosCount);
+            PlayerPrefs.Save();
+        }
     }
 }
