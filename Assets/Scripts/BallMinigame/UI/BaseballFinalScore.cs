@@ -19,7 +19,18 @@ public class BaseballFinalScore : MonoBehaviour
     private void Start()
     {
         Hide();
-        BasketTimer.OnBasketTimerFinish += BasketTimer_OnBasketTimerFinish;
+        Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
+        BaseballDuckManager.Instance.OnAllDucksDestroyed += BaseballDuckManager_OnAllDucksDestroyed;
+    }
+
+    private void BaseballDuckManager_OnAllDucksDestroyed(object sender, System.EventArgs e)
+    {
+        StartCoroutine(Show());
+    }
+
+    private void Timer_OnImageFillAmount(object sender, System.EventArgs e)
+    {
+        StartCoroutine(Show());
     }
 
     private void BasketTimer_OnBasketTimerFinish(object sender, System.EventArgs e)
@@ -29,7 +40,8 @@ public class BaseballFinalScore : MonoBehaviour
 
     private void Update()
     {
-        finalScoreText.text = "Ducks hunted: " + ScoreManager.Instance.GetBaseBallScore().ToString() + " /8 ";
+        finalScoreText.text = "Ducks hunted: " + ScoreManager.Instance.GetBaseBallScore().ToString() + "/8 ";
+        bestScoreText.text = "Best Score: " + ScoreManager.Instance.GetBestScore().ToString() + "/8";
     }
 
     private IEnumerator Show()

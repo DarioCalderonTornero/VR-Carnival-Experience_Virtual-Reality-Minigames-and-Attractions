@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseballDuckManager : MonoBehaviour
 {
     public static BaseballDuckManager Instance { get; private set; }
+
+    public event EventHandler OnAllDucksDestroyed;
 
     [SerializeField] private ParticleSystem[] ps;
 
@@ -54,6 +57,8 @@ public class BaseballDuckManager : MonoBehaviour
                 {
                     particleSystem.Play();
                 }
+
+                OnAllDucksDestroyed?.Invoke(this, EventArgs.Empty);
                 BallManager.Instance.EndGame();
             }
         }

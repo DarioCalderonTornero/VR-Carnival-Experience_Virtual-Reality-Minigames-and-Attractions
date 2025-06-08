@@ -23,7 +23,7 @@ public class BallManager : MonoBehaviour, IMinigame
     private void Start()
     {
         Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
-        //triggerZoneTransform.gameObject.SetActive(false);
+        triggerZoneTransform.gameObject.SetActive(false);
     }
 
     private void Timer_OnImageFillAmount(object sender, EventArgs e)
@@ -33,11 +33,9 @@ public class BallManager : MonoBehaviour, IMinigame
 
     public void StartGame()
     {
-        // ACTIVA primero la lógica del juego aunque la parte visual comience después
         gameActive = true;
         triggerZoneTransform.gameObject.SetActive(true);
 
-        // Esto permite que si el jugador se sale durante la cuenta atrás, se detecte correctamente
         Collider triggerCollider = triggerZoneTransform.GetComponent<Collider>();
         if (triggerCollider != null && triggerCollider.bounds.Contains(playerTransform.position))
         {
@@ -48,7 +46,6 @@ public class BallManager : MonoBehaviour, IMinigame
             }
         }
 
-        // Luego lanzas la cuenta atrás visual
         StartCoroutine(CountDown.Instance.Countdown(() =>
         {
             BeginLogic();
