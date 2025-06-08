@@ -23,7 +23,7 @@ public class BallManager : MonoBehaviour, IMinigame
     private void Start()
     {
         Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
-        triggerZoneTransform.gameObject.SetActive(false);
+        //triggerZoneTransform.gameObject.SetActive(false);
     }
 
     private void Timer_OnImageFillAmount(object sender, EventArgs e)

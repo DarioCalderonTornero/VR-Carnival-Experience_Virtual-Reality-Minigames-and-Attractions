@@ -69,14 +69,22 @@ public class TimerTopos : MonoBehaviour
         if (currentTime <= 0f)
         {
             Debug.Log("TimerFinish");
-            StopTimer();
-            currentTime = 0f;
-            FadeController.Instance.FadeIn();
-            Invoke(nameof(TPPlayer), 1.5f);
-            Invoke(nameof(FadeOut), 3f);
-            OnTimerFinish?.Invoke(this, EventArgs.Empty);
+            FinishMinigame();
             //BeginMinigameTopos.Instance.playerMove.enabled = true;
         }
+    }
+
+    public void FinishMinigame()
+    {
+        StopTimer();
+        currentTime = 0f;
+        FadeController.Instance.FadeIn();
+        Invoke(nameof(TPPlayer), 1.5f);
+        Invoke(nameof(FadeOut), 3f);
+        OnTimerFinish?.Invoke(this, EventArgs.Empty);
+        canvasGroup.alpha = 0f;
+        BeginMinigameTopos.Instance.minigameStarted = false;
+        BackToGameCountDownTopos.Instance.Hide();
     }
 
     private void TPPlayer()

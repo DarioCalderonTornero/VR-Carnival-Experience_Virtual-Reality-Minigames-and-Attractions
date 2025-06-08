@@ -9,6 +9,7 @@ public class BeginMinigameTopos : MonoBehaviour
     public event EventHandler OnBeginMinigameTopos;
 
     private bool beginMinigame = false;
+    public bool minigameStarted = false;
 
     //public ContinuousMoveProvider playerMove;
 
@@ -30,10 +31,14 @@ public class BeginMinigameTopos : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //&& beginMinigame
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !minigameStarted)
         {
+            minigameStarted = true;
             Debug.Log("StartMinigame");
-            OnBeginMinigameTopos?.Invoke(this,EventArgs.Empty);
+            StartCoroutine(CountDown.Instance.Countdown(() =>
+            {
+                OnBeginMinigameTopos?.Invoke(this, EventArgs.Empty);
+            }));
             //playerMove.enabled = false;
         }
     }
