@@ -24,7 +24,7 @@ public class CansManager : MonoBehaviour
     public Transform jugador;
 
     [Header("Puntos")]
-    private int latasCaidasTotales = 0;
+    public int latasCaidasTotales = 0;
 
     private List<GameObject> pelotasInstanciadas = new List<GameObject>();
     private int pelotasUsadas = 0;
@@ -158,6 +158,10 @@ public class CansManager : MonoBehaviour
     {
         int puntos = latasCaidasTotales;
         Debug.Log($"Minijuego terminado. Puntos totales: {puntos}");
+
+        CansFinalScore.Instance.Show();
+
+        yield return new WaitForSeconds(7f);
 
         FadeController.Instance.FadeIn();
         TriggerCansMinigame.Instance.started = false;
