@@ -59,7 +59,7 @@ public class TimerTopos : MonoBehaviour
     {
         if (!isRunning)
             return;
-        Debug.Log(currentTime);
+        //Debug.Log(currentTime);
 
         currentTime -= Time.deltaTime;
         float fill = Mathf.Clamp01(currentTime / duration);
@@ -78,9 +78,6 @@ public class TimerTopos : MonoBehaviour
     {
         StopTimer();
         currentTime = 0f;
-        FadeController.Instance.FadeIn();
-        Invoke(nameof(TPPlayer), 1.5f);
-        Invoke(nameof(FadeOut), 3f);
         OnTimerFinish?.Invoke(this, EventArgs.Empty);
         canvasGroup.alpha = 0f;
         BeginMinigameTopos.Instance.minigameStarted = false;

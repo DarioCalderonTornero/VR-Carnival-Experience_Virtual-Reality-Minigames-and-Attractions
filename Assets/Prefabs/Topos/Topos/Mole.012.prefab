@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd90d01988ee7da40b31878f4eeb371f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topoType: 1
   timeToDestroy: 2
   moveAmount: 0.5
   timeWithoutMove: 0.3

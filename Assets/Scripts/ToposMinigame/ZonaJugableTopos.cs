@@ -17,13 +17,23 @@ public class ZonaJugableTopos : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        TimerTopos.Instance.OnTimerFinish += TimerTopos_OnTimerFinish;
+    }
+
+    private void TimerTopos_OnTimerFinish(object sender, System.EventArgs e)
+    {
+        started = false;
+        warningEffect.DisableWarningEffect();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !started)
         {
             started = true;
             playerInZone = true;
-            //BallManager.Instance.StartGame();
             time = maxTime;
         }
 
