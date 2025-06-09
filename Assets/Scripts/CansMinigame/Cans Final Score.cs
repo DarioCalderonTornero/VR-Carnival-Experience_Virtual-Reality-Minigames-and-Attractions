@@ -27,24 +27,8 @@ public class CansFinalScore : MonoBehaviour
     private void Start()
     {
         Hide();
-        Timer.Instance.OnImageFillAmount += Timer_OnImageFillAmount;
-        BaseballDuckManager.Instance.OnAllDucksDestroyed += BaseballDuckManager_OnAllDucksDestroyed;
     }
 
-    private void BaseballDuckManager_OnAllDucksDestroyed(object sender, System.EventArgs e)
-    {
-        StartCoroutine(Show());
-    }
-
-    private void Timer_OnImageFillAmount(object sender, System.EventArgs e)
-    {
-        StartCoroutine(Show());
-    }
-
-    private void BasketTimer_OnBasketTimerFinish(object sender, System.EventArgs e)
-    {
-        StartCoroutine(Show());
-    }
 
     private void Update()
     {

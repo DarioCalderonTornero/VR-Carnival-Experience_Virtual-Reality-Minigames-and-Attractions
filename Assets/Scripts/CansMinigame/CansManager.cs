@@ -159,7 +159,7 @@ public class CansManager : MonoBehaviour
         int puntos = latasCaidasTotales;
         Debug.Log($"Minijuego terminado. Puntos totales: {puntos}");
 
-        CansFinalScore.Instance.Show();
+        StartCoroutine(CansFinalScore.Instance.Show());
 
         yield return new WaitForSeconds(7f);
 

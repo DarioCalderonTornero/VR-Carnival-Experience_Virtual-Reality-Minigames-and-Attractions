@@ -22,7 +22,7 @@ public class CansScoreManager : MonoBehaviour
     private void Start()
     {
         //Topo.OnAnyTopoDestroyed += Topo_OnAnyTopoDestroyed;
-        TimerTopos.Instance.OnTimerFinish += TimerTopos_OnTimerFinish;
+        //TimerTopos.Instance.OnTimerFinish += TimerTopos_OnTimerFinish;
     }
 
     private void TimerTopos_OnTimerFinish(object sender, EventArgs e)
