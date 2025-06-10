@@ -23,7 +23,6 @@ public class SimonSaysGame : MonoBehaviour
     private bool gameRunning = false;
     private bool hasEnteredProximity = false;
 
-    // Estados
     private enum GameState { Idle, StartDelay, PlayingSequence, WaitBetweenFlashes, WaitAfterFailure, PlayerTurn, NextRoundDelay }
     private GameState currentState = GameState.Idle;
 
@@ -55,7 +54,9 @@ public class SimonSaysGame : MonoBehaviour
     public void StartGame()
     {
         gameRunning = true;
+        isPlayerTurn = false;
         sequence.Clear();
+        SimonScore.Instance?.ResetScore(); // Reinicia la puntuación
         AddRandomStep();
         currentState = GameState.StartDelay;
         stateTimer = 1f;
@@ -131,8 +132,6 @@ public class SimonSaysGame : MonoBehaviour
                 {
                     foreach (var button in buttons)
                         button.SetColor(button.baseColor);
-
-                    // StartGame();
                 }
                 break;
 
@@ -148,7 +147,6 @@ public class SimonSaysGame : MonoBehaviour
                 break;
 
             case GameState.PlayerTurn:
-                // input control goes elsewhere
                 break;
         }
     }
@@ -164,6 +162,9 @@ public class SimonSaysGame : MonoBehaviour
             {
                 isPlayerTurn = false;
                 DisableAllButtons();
+
+                SimonScore.Instance?.AddRound(); // Añade punto
+
                 stateTimer = 1f;
                 currentState = GameState.NextRoundDelay;
             }
@@ -185,6 +186,10 @@ public class SimonSaysGame : MonoBehaviour
         {
             button.SetColor(Color.red);
         }
+
+        SimonScore.Instance?.UpdateBestScore();
+
+        FindFirstObjectByType<SimonFinalScore>()?.Show(); // ¡Arreglado aquí!
 
         stateTimer = failDisplayTime;
         currentState = GameState.WaitAfterFailure;
