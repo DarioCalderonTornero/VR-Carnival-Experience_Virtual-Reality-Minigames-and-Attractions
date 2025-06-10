@@ -32,8 +32,8 @@ public class FootballFinalScore : MonoBehaviour
 
     private void Update()
     {
-        finalScoreText.text = "Goals scored: " + CansManager.Instance.latasCaidasTotales.ToString();
-        bestScoreText.text = "Best Score: " + CansScoreManager.Instance.GetBestCansScore().ToString();
+        finalScoreText.text = "Goals scored: " + FootbalMinigameManager.Instance.puntos.ToString();
+        bestScoreText.text = "Best Score: " + FootballScoreManager.Instance.GetBestFootballScore().ToString();
     }
 
     public IEnumerator Show()

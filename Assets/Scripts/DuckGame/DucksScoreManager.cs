@@ -20,12 +20,6 @@ public class DucksScoreManager : MonoBehaviour
         DucksScore = DuckManager.Instance.patosDerribados;
     }
 
-    private void TimerTopos_OnTimerFinish(object sender, EventArgs e)
-    {
-        // UpdateBestScore();
-        // StartCoroutine(ResetScores());
-    }
-
     public IEnumerator ResetScores()
     {
         yield return new WaitForSeconds(resetTime);

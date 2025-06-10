@@ -32,8 +32,8 @@ public class DucksFinalScore : MonoBehaviour
 
     private void Update()
     {
-        finalScoreText.text = "Ducks hitted: " + CansManager.Instance.latasCaidasTotales.ToString();
-        bestScoreText.text = "Best Score: " + CansScoreManager.Instance.GetBestCansScore().ToString();
+        finalScoreText.text = "Ducks hitted: " + DuckManager.Instance.patosDerribados.ToString();
+        bestScoreText.text = "Best Score: " + DucksScoreManager.Instance.GetBestDucksScore().ToString();
     }
 
     public IEnumerator Show()

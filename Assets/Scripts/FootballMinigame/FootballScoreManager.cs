@@ -27,14 +27,14 @@ public class FootballScoreManager : MonoBehaviour
         FootballScore = 0;
     }
 
-    public int GetBestDucksScore()
+    public int GetBestFootballScore()
     {
         return PlayerPrefs.GetInt("BestFootballScore", 0);
     }
 
     public void UpdateBestScore()
     {
-        if (FootballScore > GetBestDucksScore())
+        if (FootballScore > GetBestFootballScore())
         {
             PlayerPrefs.SetInt("BestFootballScore", FootballScore);
             PlayerPrefs.Save();
