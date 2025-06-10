@@ -22,6 +22,7 @@ public class Topo : MonoBehaviour
 
     private void Start()
     {
+        //transform.rotation = Quaternion.Euler(90, 0, 0);
         Sequence topoSequence = DOTween.Sequence();
         topoSequence.Append(transform.DOMoveY(transform.position.y + 1f, 0.5f))
                     .AppendInterval(0.3f)
