@@ -16,6 +16,8 @@ public class Topo : MonoBehaviour
     [SerializeField] private float moveAmount = 0.5f;
     [SerializeField] private float timeWithoutMove = 0.3f;
 
+    [SerializeField] private AudioClip destroyAudioClip;
+
     private bool alreadyhit = false;
 
     private void Start()
@@ -36,6 +38,7 @@ public class Topo : MonoBehaviour
         if (other.CompareTag("Hammer"))
         {
             alreadyhit = true;
+            SoundManager.Instance.Play3DSound(destroyAudioClip, transform.position);
             ToposScoreManager.Instance.ScoreRegister(this);
             OnAnyTopoDestroyed?.Invoke(this, EventArgs.Empty);
             Debug.Log("Colision detected");

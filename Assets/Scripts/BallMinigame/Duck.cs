@@ -8,6 +8,8 @@ public class Duck : MonoBehaviour
     public static event EventHandler OnAnyDuckDetected;
     public static event EventHandler OnAnyDuckDestroyed;
 
+    [SerializeField] private AudioClip destroyAudioClip;
+
     private bool duckAlreadyHit = false;
 
     private void Awake()
@@ -28,6 +30,8 @@ public class Duck : MonoBehaviour
             if (hitParticlePrefab != null)
             {
                 duckAlreadyHit = true;
+
+                SoundManager.Instance.Play3DSound(destroyAudioClip, transform.position);
 
                 GameObject particle = Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();

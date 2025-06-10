@@ -8,11 +8,15 @@ public class Basketball : MonoBehaviour
     [SerializeField] private Transform particleSystemTransform;
     [SerializeField] private ParticleSystem ps;
 
+    [SerializeField] private AudioClip canastaAudioClip;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Net"))
         {
             OnCanasta?.Invoke(this, EventArgs.Empty);
+
+            SoundManager.Instance.Play3DSound(canastaAudioClip, transform.position);
 
             if (!PeriodManager.Instance.minigameStarted)
             {

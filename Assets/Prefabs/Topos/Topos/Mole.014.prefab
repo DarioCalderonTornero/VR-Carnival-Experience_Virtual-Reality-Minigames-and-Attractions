@@ -317,6 +317,7 @@ MonoBehaviour:
   timeToDestroy: 2
   moveAmount: 0.5
   timeWithoutMove: 0.3
+  destroyAudioClip: {fileID: 8300000, guid: 2db65b8483be5ce4e85dc0a38523bfdf, type: 3}
 --- !u!65 &-3242264408633238498
 BoxCollider:
   m_ObjectHideFlags: 0
