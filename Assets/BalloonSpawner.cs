@@ -73,8 +73,8 @@ public class BalloonSpawner : MonoBehaviour
         }
 
         hand.gameObject.SetActive(false);
-        ballon_Score.score_balloon = 0;
         ballonFinalScore.Show();
+        ballon_Score.score_balloon = 0;
     }
 
     private IEnumerator StopSpawningAfterDelay(float delay)
