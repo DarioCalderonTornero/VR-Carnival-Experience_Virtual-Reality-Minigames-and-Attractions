@@ -25,13 +25,18 @@ public class CansScoreManager : MonoBehaviour
         //TimerTopos.Instance.OnTimerFinish += TimerTopos_OnTimerFinish;
     }
 
-    private void TimerTopos_OnTimerFinish(object sender, EventArgs e)
+    private void Update()
     {
-        UpdateBestScore();
-        StartCoroutine(ResetScores());
+        CansScore = CansManager.Instance.latasCaidasTotales;
     }
 
-    private IEnumerator ResetScores()
+    private void TimerTopos_OnTimerFinish(object sender, EventArgs e)
+    {
+        // UpdateBestScore();
+        // StartCoroutine(ResetScores());
+    }
+
+    public IEnumerator ResetScores()
     {
         yield return new WaitForSeconds(resetTime);
 

@@ -33,7 +33,7 @@ public class CansFinalScore : MonoBehaviour
     private void Update()
     {
         finalScoreText.text = "Cans hitted: " + CansManager.Instance.latasCaidasTotales.ToString();
-        //bestScoreText.text = "Best Score: " + CansScoreManager.Instance.GetBestCansScore().ToString();
+        bestScoreText.text = "Best Score: " + CansScoreManager.Instance.GetBestCansScore().ToString();
     }
 
     public IEnumerator Show()

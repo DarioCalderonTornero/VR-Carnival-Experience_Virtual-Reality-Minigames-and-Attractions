@@ -17,10 +17,17 @@ public class FootbalMinigameManager : MonoBehaviour
 
     private GameObject pelotaActual;
     private bool minijuegoActivo = false;
-    private int puntos = 0;
+    public int puntos = 0;
     private int rondasActuales = 0;
 
     [SerializeField] private GoalKeeper portero;
+
+    public static FootbalMinigameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void EmpezarMinijuego()
     {
@@ -84,7 +91,12 @@ public class FootbalMinigameManager : MonoBehaviour
     {
         Debug.Log($"Minijuego terminado. Puntos: {puntos}");
 
+        FootballScoreManager.Instance.UpdateBestScore();
+        StartCoroutine(FootballScoreManager.Instance.ResetScores());
+
         portero.DetenerMovimiento();
+
+        StartCoroutine(FootballFinalScore.Instance.Show());
 
         if (jugador != null && zonaSalidaJugador != null)
         {

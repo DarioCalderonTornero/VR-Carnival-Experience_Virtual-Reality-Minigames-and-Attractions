@@ -18,7 +18,7 @@ public class DuckManager : MonoBehaviour
     private float tiempoRestante;
     private bool enJuego = false;
 
-    private int patosDerribados = 0;
+    public int patosDerribados = 0;
     private List<GameObject> patosInstanciados = new List<GameObject>();
 
     [SerializeField] private ObstáculoMóvil obstaculo;
@@ -101,8 +101,15 @@ public class DuckManager : MonoBehaviour
         enJuego = false;
         obstaculo.DetenerMovimiento();
 
+        DucksScoreManager.Instance.UpdateBestScore();
+        StartCoroutine(DucksScoreManager.Instance.ResetScores());
+
+        StartCoroutine(DucksFinalScore.Instance.Show());
+
         esferaDer.gameObject.SetActive(false);
         esferaIzq.gameObject.SetActive(false);
+
+        FadeController.Instance.FadeIn();
 
         MoverJugadorFuera();
 
