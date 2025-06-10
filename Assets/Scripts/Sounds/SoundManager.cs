@@ -57,7 +57,7 @@ public class SoundManager : MonoBehaviour
         if (clip == null) return;
     }
 
-    public void PlayMusic(AudioClip musicClip, float volume = 0.5f)
+    public void PlayMusic(AudioClip musicClip, float volume = 0.2f)
     {
         if (musicClip == null || musicSource.clip == musicClip) return;
         musicSource.clip = musicClip;

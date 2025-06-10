@@ -31,7 +31,7 @@ public class BeginMinigameTopos : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //&& beginMinigame
-        if (other.CompareTag("Player") && beginMinigame && !minigameStarted)
+        if (other.CompareTag("Player")  && !minigameStarted)
         {
             minigameStarted = true;
             Debug.Log("StartMinigame");

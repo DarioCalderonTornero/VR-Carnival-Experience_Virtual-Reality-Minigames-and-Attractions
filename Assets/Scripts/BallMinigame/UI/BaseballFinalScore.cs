@@ -33,10 +33,6 @@ public class BaseballFinalScore : MonoBehaviour
         StartCoroutine(Show());
     }
 
-    private void BasketTimer_OnBasketTimerFinish(object sender, System.EventArgs e)
-    {
-        StartCoroutine(Show());
-    }
 
     private void Update()
     {

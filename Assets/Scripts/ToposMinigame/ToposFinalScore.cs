@@ -32,7 +32,6 @@ public class ToposFinalScore : MonoBehaviour
     private void Start()
     {
         Hide();
-        BasketTimer.OnBasketTimerFinish += BasketTimer_OnBasketTimerFinish;
         TimerTopos.Instance.OnTimerFinish += TimerTopos_OnTimerFinish;
     }
 
@@ -41,10 +40,6 @@ public class ToposFinalScore : MonoBehaviour
         StartCoroutine(Show());
     }
 
-    private void BasketTimer_OnBasketTimerFinish(object sender, System.EventArgs e)
-    {
-        StartCoroutine(Show());
-    }
 
     private void Update()
     {

@@ -8,6 +8,8 @@ public class Duck : MonoBehaviour
     public static event EventHandler OnAnyDuckDetected;
     public static event EventHandler OnAnyDuckDestroyed;
 
+    private bool duckAlreadyHit = false;
+
     private void Awake()
     {
         
@@ -16,12 +18,17 @@ public class Duck : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (duckAlreadyHit)
+            return;
+
         if (collision.collider.CompareTag("Ball"))
         {
             Debug.Log("DuckDetected");
 
             if (hitParticlePrefab != null)
             {
+                duckAlreadyHit = true;
+
                 GameObject particle = Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                 ps.Play();

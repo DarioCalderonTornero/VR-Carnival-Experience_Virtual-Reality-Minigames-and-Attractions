@@ -24,7 +24,7 @@ public class BeginMiniGame : MonoBehaviour
         {
             started = true;
             playerInZone = true;
-            BallManager.Instance.StartGame();
+            //BallManager.Instance.StartGame();
             time = maxTime;
         }
 
@@ -53,7 +53,7 @@ public class BeginMiniGame : MonoBehaviour
         {
             time -= Time.deltaTime;
 
-            Debug.Log(time);
+            //Debug.Log(time);
 
             if (time > 0)
             {
