@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BalloonFloat : MonoBehaviour
 {
@@ -6,6 +8,7 @@ public class BalloonFloat : MonoBehaviour
     public float floatSpeed = 1.5f;
     public float floatAmplitude = 0.5f;
     public float floatFrequency = 1f;
+    Ballon_Score ballon_Score;
 
     [Header("FX al explotar")]
     public GameObject explosionFX;
@@ -31,12 +34,9 @@ public class BalloonFloat : MonoBehaviour
     {
         if (other.CompareTag("PlayerHand"))
         {
-            if (explosionFX != null)
-            {
-                Instantiate(explosionFX, transform.position, Quaternion.identity);
-            }
-
-            Destroy(gameObject);
+          Instantiate(explosionFX, transform.position, Quaternion.identity);
+          ballon_Score.score_balloon++;
+          Destroy(gameObject);
         }
     }
 }
