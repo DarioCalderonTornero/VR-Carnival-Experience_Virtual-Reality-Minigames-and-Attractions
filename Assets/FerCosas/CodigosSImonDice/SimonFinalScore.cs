@@ -15,6 +15,7 @@ public class SimonFinalScore : MonoBehaviour
     [SerializeField] private Image backgroundImage2;
     [SerializeField] private Image decorationImage;
     [SerializeField] private Image decorationImage2;
+    [SerializeField] private Image simonSaysImage;
 
     [Header("Botón de reinicio")]
     [SerializeField] private Button restartButton;
@@ -46,6 +47,7 @@ public class SimonFinalScore : MonoBehaviour
         decorationImage2.gameObject.SetActive(true);
         messageText.gameObject.SetActive(true);
         backgroundImage2.gameObject.SetActive(true);
+        simonSaysImage.gameObject.SetActive(true);
     }
 
     private void Hide()
@@ -58,6 +60,7 @@ public class SimonFinalScore : MonoBehaviour
         decorationImage2.gameObject.SetActive(false);
         messageText.gameObject.SetActive(false);
         backgroundImage2.gameObject.SetActive(false);
+        simonSaysImage.gameObject.SetActive(false);
     }
 
     private void RestartGame()
