@@ -109,8 +109,6 @@ public class DuckManager : MonoBehaviour
         esferaDer.gameObject.SetActive(false);
         esferaIzq.gameObject.SetActive(false);
 
-        FadeController.Instance.FadeIn();
-
         MoverJugadorFuera();
 
         int puntos = patosDerribados;

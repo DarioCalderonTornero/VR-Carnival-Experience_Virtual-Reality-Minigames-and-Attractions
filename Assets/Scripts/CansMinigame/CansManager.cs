@@ -72,6 +72,8 @@ public class CansManager : MonoBehaviour
 
         rondasActuales = 0;
 
+        moveProvider.enabled = false;
+
         // tiempoRestante = tiempoLimite;
         // temporizadorActivo = true;
 
@@ -179,6 +181,7 @@ public class CansManager : MonoBehaviour
 
         enJuego = false;
         temporizadorActivo = false;
+        moveProvider.enabled = true;
 
         TicketsSystem.Instance.GanaTickets(puntos);
 
