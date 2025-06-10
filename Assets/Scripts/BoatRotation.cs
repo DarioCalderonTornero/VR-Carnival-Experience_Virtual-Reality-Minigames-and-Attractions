@@ -20,6 +20,8 @@ public class BoatRotation : MonoBehaviour
 
     public ContinuousMoveProvider moveProvider;
 
+    private GameObject jugadorActual;
+
     private void Start()
     {
         rotacionOriginal = transform.rotation;
@@ -28,26 +30,28 @@ public class BoatRotation : MonoBehaviour
     public void IniciarAtraccion(GameObject jugador)
     {
         if (!atraccionActiva)
-            StartCoroutine(ActivarAtraccion(jugador));
+        {
+            jugadorActual = jugador;
+            StartCoroutine(ActivarAtraccion());
+        }
     }
 
-    public IEnumerator ActivarAtraccion(GameObject jugador)
+    private IEnumerator ActivarAtraccion()
     {
         FadeController.Instance.FadeIn();
-
         yield return new WaitForSeconds(1f);
 
         atraccionActiva = true;
-
         moveProvider.enabled = false;
 
         // Teletransportar al jugador
-        jugador.transform.position = posicionInicioJugador.position;
-        jugador.transform.rotation = posicionInicioJugador.rotation;
-        jugador.transform.SetParent(posicionInicioJugador);
+        jugadorActual.transform.position = posicionInicioJugador.position;
+        jugadorActual.transform.rotation = posicionInicioJugador.rotation;
+
+        // Hacer al jugador hijo del barco para que rote con él
+        jugadorActual.transform.SetParent(transform);
 
         FadeController.Instance.FadeOut();
-
         yield return new WaitForSeconds(1f);
 
         // Iniciar la rotación del barco
@@ -56,50 +60,45 @@ public class BoatRotation : MonoBehaviour
         // Esperar la duración de la atracción
         yield return new WaitForSeconds(duracionAtraccion);
 
-        // Finalizar la atracción con coroutine
+        // Finalizar la atracción
         yield return StartCoroutine(FinalizarAtraccion());
     }
 
-    void RotarBarco()
+    private void RotarBarco()
     {
         Vector3 rotacionInicial = transform.rotation.eulerAngles;
 
         secuencia = DOTween.Sequence();
-
         secuencia.Append(transform.DORotate(new Vector3(rotacionInicial.x, rotacionInicial.y, maxRotationAngle), tiempoSubida, RotateMode.FastBeyond360)
             .SetEase(Ease.InQuad));
 
         secuencia.Append(transform.DORotate(new Vector3(rotacionInicial.x, rotacionInicial.y, -maxRotationAngle), tiempoSubida, RotateMode.FastBeyond360)
             .SetEase(Ease.InOutQuad)
-            .SetLoops(-1, LoopType.Yoyo));
-
-        secuencia.SetLoops(-1, LoopType.Restart);
+            .SetLoops(-1, LoopType.Yoyo)); // SOLO un SetLoops aquí
     }
 
     public IEnumerator FinalizarAtraccion()
     {
         if (secuencia != null && secuencia.IsActive()) secuencia.Kill();
+
+        // Volver a la rotación original
         transform.DORotateQuaternion(rotacionOriginal, 1f);
 
         FadeController.Instance.FadeIn();
-
         yield return new WaitForSeconds(1f);
 
-        // Teletransportar al jugador a la salida
-        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
-        if (jugador != null)
+        if (jugadorActual != null)
         {
-            jugador.transform.SetParent(null);
-
-            jugador.transform.position = posicionSalidaJugador.position;
-            jugador.transform.rotation = posicionSalidaJugador.rotation;
+            // Quitar como hijo y mover a la salida
+            jugadorActual.transform.SetParent(null);
+            jugadorActual.transform.position = posicionSalidaJugador.position;
+            jugadorActual.transform.rotation = posicionSalidaJugador.rotation;
         }
 
         atraccionActiva = false;
+        jugadorActual = null;
 
         FadeController.Instance.FadeOut();
-
         moveProvider.enabled = true;
-        
     }
 }
