@@ -42,7 +42,8 @@ The project was created to explore the design and programming challenges of **in
 ---
 
 ## 📸 Screenshots & Media
-*(You can add gameplay images or GIFs here, e.g. in a `/Media` folder.)*
+
+https://github.com/user-attachments/assets/2cffaf9d-91c2-4136-8715-9d1cb85d8e5b
 
 ---
 
