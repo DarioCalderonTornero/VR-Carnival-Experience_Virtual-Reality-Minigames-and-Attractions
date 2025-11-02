@@ -59,6 +59,6 @@ https://github.com/user-attachments/assets/2cffaf9d-91c2-4136-8715-9d1cb85d8e5b
 2D/3D Videogame Programmer | Unity & VR Developer  
 
 [Portfolio Website](https://dariocalderondev.wordpress.com)  
-[LinkedIn](#) | [GitHub](https://github.com/DarioCalderonTornero)
+| [GitHub](https://github.com/DarioCalderonTornero)
 
 ---
