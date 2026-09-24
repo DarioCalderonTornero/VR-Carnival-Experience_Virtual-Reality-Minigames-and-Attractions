@@ -25,7 +25,7 @@ Players can freely move around using VR input controls, interact with objects, p
 ---
 
 ## ⚙️ Tools & Technologies
-- **Engine:** Unity  
+- **Engine:** Unity 6 (6000.0)  
 - **Language:** C#  
 - **Framework:** XR Interaction Toolkit  
 - **Platform:** Oculus / OpenXR-compatible headsets  
@@ -55,10 +55,8 @@ https://github.com/user-attachments/assets/2cffaf9d-91c2-4136-8715-9d1cb85d8e5b
 ---
 
 ## 👤 Author
-**Darío Calderón Tornero**  
-2D/3D Videogame Programmer | Unity & VR Developer  
+**Darío Calderón Tornero** — Gameplay Programmer (Unity & Unreal Engine 5)  
 
-[Portfolio Website](https://dariocalderondev.wordpress.com) |
-[GitHub](https://github.com/DarioCalderonTornero)
+[Portfolio](https://dariogamedev.com) · [LinkedIn](https://www.linkedin.com/in/dariocalderontornero/) · [GitHub](https://github.com/DarioCalderonTornero)
 
 ---
